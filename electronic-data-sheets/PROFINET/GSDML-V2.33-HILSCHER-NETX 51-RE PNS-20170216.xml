@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.33.xsd">
+  <ProfileHeader>
+    <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+    <ProfileRevision>1.00</ProfileRevision>
+    <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+    <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+    <ProfileClassID>Device</ProfileClassID>
+    <ISO15745Reference>
+      <ISO15745Part>4</ISO15745Part>
+      <ISO15745Edition>1</ISO15745Edition>
+      <ProfileTechnology>GSDML</ProfileTechnology>
+    </ISO15745Reference>
+  </ProfileHeader>
+  <ProfileBody>
+    <DeviceIdentity DeviceID="0x0115" VendorID="0x011E">
+      <InfoText TextId="DeviceDescription_InfoText"/>
+      <VendorName Value="Hilscher Gesellschaft für Systemautomation mbH"/>
+    </DeviceIdentity>
+    <DeviceFunction>
+      <Family MainFamily="I/O" ProductFamily="PNS"/>
+    </DeviceFunction>
+    <ApplicationProcess>
+      <DeviceAccessPointList>
+        <DeviceAccessPointItem CheckDeviceID_Allowed="true" DNS_CompatibleName="netx51repns" DeviceAccessSupported="true" FixedInSlots="0" ID="DIM 24" ImplementationType="netX" LLDP_NoD_Supported="true" MinDeviceInterval="8" ModuleIdentNumber="0x00002081" MultipleWriteSupported="true" NameOfStationNotTransferable="true" NumberOfDeviceAccessAR="1" ObjectUUID_LocalIndex="1" PNIO_Version="V2.33" PhysicalSlots="0..255" PowerOnToCommReady="500" PrmBeginPrmEndSequenceSupported="false" ResetToFactoryModes="2" SharedDeviceSupported="true" SharedInputSupported="false">
+          <ModuleInfo>
+            <Name TextId="NETX 51 RE/PNS V3.5.35 - V3.x Host Example"/>
+            <InfoText TextId="DIM 24_InfoText"/>
+            <VendorName Value="Hilscher Gesellschaft für Systemautomation mbH"/>
+            <OrderNumber Value="2231.000"/>
+            <HardwareRelease Value="3"/>
+            <SoftwareRelease Value="V3.x"/>
+          </ModuleInfo>
+          <CertificationInfo ApplicationClass="" ConformanceClass="C" NetloadClass="III"/>
+          <SubslotList>
+            <SubslotItem SubslotNumber="32768" TextId="X1"/>
+            <SubslotItem SubslotNumber="32769" TextId="X1P1"/>
+            <SubslotItem SubslotNumber="32770" TextId="X1P2"/>
+          </SubslotList>
+          <IOConfigData MaxInputLength="1440" MaxOutputLength="1440"/>
+          <UseableModules>
+            <ModuleItemRef FixedInSlots="1" ModuleItemTarget="10byteinput"/>
+            <ModuleItemRef FixedInSlots="2" ModuleItemTarget="4byteoutput"/>
+          </UseableModules>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="DIM 24" IM5_Supported="true" MayIssueProcessAlarm="false" SubmoduleIdentNumber="0x00002080" Writeable_IM_Records="1 2 3 4">
+              <IOData/>
+              <ModuleInfo CategoryRef="DAP Module">
+                <Name TextId="NETX 51 RE/PNS V3.5.35 - V3.x Host Example"/>
+                <InfoText TextId="DIM 24_InfoText"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+          <SystemDefinedSubmoduleList>
+            <InterfaceSubmoduleItem DCP_BoundarySupported="true" DCP_HelloSupported="true" DelayMeasurementSupported="true" ID="DIM 24 Interfacesubmodule" NetworkComponentDiagnosisSupported="true" PTP_BoundarySupported="true" SubmoduleIdentNumber="0x00002081" SubslotNumber="32768" SupportedProtocols="SNMP;LLDP" SupportedRT_Classes="RT_CLASS_1;RT_CLASS_3" TextId="PN-IO">
+              <RT_Class3Properties ForwardingMode="Relative" MaxBridgeDelay="5500" MaxNumberIR_FrameData="256" MaxRetentionTime="20000" StartupMode="Advanced;Legacy"/>
+              <SynchronisationMode MaxLocalJitter="50" SupportedRole="SyncSlave" SupportedSyncProtocols="PTCP" T_PLL_MAX="1000"/>
+              <ApplicationRelations NumberOfAR="2" StartupMode="Advanced;Legacy">
+                <TimingProperties ReductionRatio="1 2 4 8 16 32 64 128 256 512" SendClock="32 64 128"/>
+                <RT_Class3TimingProperties ReductionRatio="1 2 4 8 16" SendClock="8 16 32 64 128"/>
+              </ApplicationRelations>
+              <MediaRedundancy SupportedRole="Client"/>
+            </InterfaceSubmoduleItem>
+            <PortSubmoduleItem CheckMAUTypeDifferenceSupported="true" CheckMAUTypeSupported="true" ID="DIM 24 Portsubmodule 1" IsDefaultRingport="true" LinkStateDiagnosisCapability="Up+Down" MAUTypes="16" MaxPortRxDelay="340" MaxPortTxDelay="92" PortDeactivationSupported="true" SubmoduleIdentNumber="0x00002082" SubslotNumber="32769" TextId="Port1">
+              <MAUTypeList>
+                <MAUTypeItem AdjustSupported="true" Value="16"/>
+              </MAUTypeList>
+            </PortSubmoduleItem>
+            <PortSubmoduleItem CheckMAUTypeDifferenceSupported="true" CheckMAUTypeSupported="true" ID="DIM 24 Portsubmodule 2" IsDefaultRingport="true" LinkStateDiagnosisCapability="Up+Down" MAUTypes="16" MaxPortRxDelay="340" MaxPortTxDelay="92" PortDeactivationSupported="true" SubmoduleIdentNumber="0x00002083" SubslotNumber="32770" TextId="Port2">
+              <MAUTypeList>
+                <MAUTypeItem AdjustSupported="true" Value="16"/>
+              </MAUTypeList>
+            </PortSubmoduleItem>
+          </SystemDefinedSubmoduleList>
+          <Graphics>
+            <GraphicItemRef GraphicItemTarget="1" Type="DeviceSymbol"/>
+            <GraphicItemRef GraphicItemTarget="1" Type="DeviceIcon"/>
+          </Graphics>
+        </DeviceAccessPointItem>
+      </DeviceAccessPointList>
+      <ModuleList>
+        <ModuleItem ID="10byteinput" ModuleIdentNumber="0x00000001">
+          <ModuleInfo CategoryRef="Input Module">
+            <Name TextId="Module_10byteinput_Name"/>
+            <InfoText TextId="Module_10byteinput_InfoText"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="10byteinput" MayIssueProcessAlarm="false" SubmoduleIdentNumber="0x00000001">
+              <IOData>
+                <Input>
+                  <DataItem DataType="OctetString" Length="10" TextId="DataItem_10byteinput_inputdata_0_Name"/>
+                </Input>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="Submodule_10byteinput_Name"/>
+                <InfoText TextId="Submodule_10byteinput_InfoText"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="4byteoutput" ModuleIdentNumber="0x00000002">
+          <ModuleInfo CategoryRef="Output Module">
+            <Name TextId="Module_4byteoutput_Name"/>
+            <InfoText TextId="Module_4byteoutput_InfoText"/>
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="4byteoutput" MayIssueProcessAlarm="false" SubmoduleIdentNumber="0x00000001">
+              <IOData>
+                <Output>
+                  <DataItem DataType="OctetString" Length="4" TextId="DataItem_4byteoutput_outputdata_0_Name"/>
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="Submodule_4byteoutput_Name"/>
+                <InfoText TextId="Submodule_4byteoutput_InfoText"/>
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+      </ModuleList>
+      <GraphicsList>
+        <GraphicItem GraphicFile="GSDML-011E-0115-NETX51REPNS" ID="1"/>
+      </GraphicsList>
+      <CategoryList>
+        <CategoryItem ID="DAP Module" TextId="DAP Module_CategoryName"/>
+        <CategoryItem ID="Input Module" TextId="Input Module_CategoryName"/>
+        <CategoryItem ID="Output Module" TextId="Output Module_CategoryName"/>
+      </CategoryList>
+      <ExternalTextList>
+        <PrimaryLanguage>
+          <Text TextId="DAP Module_CategoryName" Value="Device Access Point Modules"/>
+          <Text TextId="DIM 24_InfoText" Value="Firmware version V3.5.35 - V3.x. Supports FastStartup, Identification &amp; Maintenance 1-5, Shared Device, RT and IRT Communication, Advanced startup."/>
+          <Text TextId="DataItem_10byteinput_inputdata_0_Name" Value="Inputs"/>
+          <Text TextId="DataItem_4byteoutput_outputdata_0_Name" Value="Outputs"/>
+          <Text TextId="DeviceDescription_InfoText" Value="PROFINET IO-Device based on netX51."/>
+          <Text TextId="Input Module_CategoryName" Value="Input Modules"/>
+          <Text TextId="Module_10byteinput_InfoText" Value="10 Bytes Input Module"/>
+          <Text TextId="Module_10byteinput_Name" Value="10 Bytes Input"/>
+          <Text TextId="Module_4byteoutput_InfoText" Value="4 Bytes Output Module"/>
+          <Text TextId="Module_4byteoutput_Name" Value="4 Bytes Output"/>
+          <Text TextId="NETX 51 RE/PNS V3.5.35 - V3.x Host Example" Value="NETX 51 RE/PNS V3.5.35 - V3.x Host Example"/>
+          <Text TextId="Output Module_CategoryName" Value="Output Modules"/>
+          <Text TextId="PN-IO" Value="PN-IO"/>
+          <Text TextId="Port1" Value="Port 1"/>
+          <Text TextId="Port2" Value="Port 2"/>
+          <Text TextId="Submodule_10byteinput_InfoText" Value="10 Bytes Input Submodule"/>
+          <Text TextId="Submodule_10byteinput_Name" Value="10 Bytes Input"/>
+          <Text TextId="Submodule_4byteoutput_InfoText" Value="4 Byte Output Submodule"/>
+          <Text TextId="Submodule_4byteoutput_Name" Value="4 Bytes Output"/>
+          <Text TextId="X1" Value="X1"/>
+          <Text TextId="X1P1" Value="X1 P1"/>
+          <Text TextId="X1P2" Value="X1 P2"/>
+        </PrimaryLanguage>
+        <Language xml:lang="de">
+          <Text TextId="DAP Module_CategoryName" Value="Device Access Point Module"/>
+          <Text TextId="DIM 24_InfoText" Value="Firmware version V3.5.35 - V3.x. Unterstützt Priorisierten Hochlauf, Identification &amp; Maintenance 1-5, Shared Device, RT und IRT Betrieb, Advanced Hochlauf."/>
+          <Text TextId="DataItem_10byteinput_inputdata_0_Name" Value="Eingänge"/> 
+          <Text TextId="DataItem_4byteoutput_outputdata_0_Name" Value="Ausgänge"/>       
+          <Text TextId="DeviceDescription_InfoText" Value="PROFINET IO-Device basierend auf netX51."/>
+          <Text TextId="Input Module_CategoryName" Value="Eingangsmodule"/>
+          <Text TextId="Module_10byteinput_InfoText" Value="10 Byte Eingangsmodul"/>
+          <Text TextId="Module_10byteinput_Name" Value="10 Byte Eingang"/>
+          <Text TextId="Module_4byteoutput_InfoText" Value="4 Byte Ausgangsmodul"/>
+          <Text TextId="Module_4byteoutput_Name" Value="4 Byte Ausgang"/>
+          <Text TextId="NETX 51 RE/PNS V3.5.35 - V3.x Host Example" Value="NETX 51 RE/PNS V3.5.35 - V3.x Host Example"/>
+          <Text TextId="Output Module_CategoryName" Value="Ausgangsmodule"/>
+          <Text TextId="PN-IO" Value="PN-IO"/>
+          <Text TextId="Port1" Value="Port 1"/>
+          <Text TextId="Port2" Value="Port 2"/>
+          <Text TextId="Submodule_10byteinput_InfoText" Value="10 Byte Eingangssubmodul"/>
+          <Text TextId="Submodule_10byteinput_Name" Value="10 Byte Eingang"/>
+          <Text TextId="Submodule_4byteoutput_InfoText" Value="4 Byte Ausgangssubmodul"/>
+          <Text TextId="Submodule_4byteoutput_Name" Value="4 Byte Ausgang"/>
+          <Text TextId="X1" Value="X1"/>
+          <Text TextId="X1P1" Value="X1 P1"/>
+          <Text TextId="X1P2" Value="X1 P2"/>
+        </Language>
+      </ExternalTextList>
+    </ApplicationProcess>
+  </ProfileBody>
+</ISO15745Profile>

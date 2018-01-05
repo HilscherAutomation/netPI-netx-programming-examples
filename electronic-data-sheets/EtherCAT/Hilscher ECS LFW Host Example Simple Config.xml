@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<EtherCATInfo Version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EtherCATInfo.xsd">
+  <Vendor>
+    <Id>#xE0000044</Id>
+    <Name>Hilscher Gesellschaft für Systemautomation mbH</Name>
+    <ImageData16x14>424D360300000000000036000000280000001000000010000000010018000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</ImageData16x14>
+  </Vendor>
+  <Descriptions>
+    <Groups>
+      <Group>
+        <Type>netX</Type>
+        <Name LcId="1033">netX</Name>
+        <ImageData16x14>424dd8020000000000003600000028000000100000000e0000000100180000000000a2020000c30e0000c30e00000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d404141363838656666959696ffffffffffffffffff1b1d1d1b1d1d1c1e1e1b1d1d1c1e1e1b1d1d1b1d1d1b1d1d1c1e1e1719191a1c1c1416168d8e8effffffffffffffffff1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8e8f8fffffffffffffffffff1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1e20201b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1c1e1e1b1c1c1a1c1c1a1c1c1a1c1c1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1a1c1c1a1c1c191b1b1517171618181a1c1c1a1c1c1618181d1f1f191b1b1113131a1c1c8d8e8effffffffffffffffff757676252727343636656666979898999a9a5052527a7c7c898a8a8a8b8b626464838484949494ffffffffffffffffffa5a5a53a3c3c4d4f4f9d9e9ea0a1a1a5a5a58f9090929393242626525353e5e5e54647478b8c8cffffffffffffffffff5253536c6d6d6a6c6c4143436b6c6c6465655e5f5fa6a7a76566666e6f6f4e4f4f666868929393ffffffffffffffffff1315151517171416161416161214141517171618186263631619191214141214141416168a8b8bffffffffffffffffff2d2f2f2e30302e30302e30302e30302e30302d2f2f2729292e30302e30302e30302b2d2d979898ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000</ImageData16x14>
+      </Group>
+    </Groups>
+    <Devices>
+      <Device Physics="YY">
+        <Type ProductCode="#x00000038" RevisionNo="#x00000001">7762.000</Type>
+        <Name LcId="1033"><![CDATA[7762.000]]></Name>
+        <URL><![CDATA[https://www.netiot.com/netpi/]]></URL>
+        <GroupType>netX</GroupType>
+        <Fmmu>Outputs</Fmmu>
+        <Fmmu>Inputs</Fmmu>
+        <Fmmu>MBoxState</Fmmu>
+        <Sm MinSize="128" MaxSize="128" DefaultSize="128" StartAddress="#x1000" ControlByte="#x36" Enable="1">MBoxOut</Sm>
+        <Sm MinSize="128" MaxSize="128" DefaultSize="128" StartAddress="#x1080" ControlByte="#x32" Enable="1">MBoxIn</Sm>
+        <Sm MinSize="0" MaxSize="1024" DefaultSize="4" StartAddress="#x1100" ControlByte="#x74" Enable="1">Outputs</Sm>
+        <Sm MinSize="0" MaxSize="1024" DefaultSize="10" StartAddress="#x1D00" ControlByte="#x30" Enable="1">Inputs</Sm>
+        <RxPdo Sm="2">
+          <Index>#x1600</Index>
+          <Name>1. RxPDO</Name>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (0)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (1)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (2)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x2000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte Out (3)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3">
+          <Index>#x1A00</Index>
+          <Name>1. TxPDO</Name>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>1</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (0)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>2</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (1)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>3</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (2)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>4</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (3)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>5</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (4)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>6</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (5)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>7</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (6)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>8</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (7)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>9</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (8)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x3000</Index>
+            <SubIndex>10</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>1 Byte In (9)</Name>
+            <DataType>BYTE</DataType>
+          </Entry>
+        </TxPdo>
+        <Mailbox DataLinkLayer="1">
+          <EoE/>
+          <CoE SdoInfo="1" PdoUpload="1" CompleteAccess="0"/>
+          <FoE/>
+        </Mailbox>
+        <Dc UnknownFRMW="0" Unknown64Bit="1">
+          <OpMode>
+            <Name>DcOff</Name>
+            <Desc>DC unused</Desc>
+            <AssignActivate>#x0000</AssignActivate>
+          </OpMode>
+          <OpMode>
+            <Name>DcSync0</Name>
+            <Desc>DC Sync0 for synchronization</Desc>
+            <AssignActivate>#x0300</AssignActivate>
+            <CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+            <ShiftTimeSync0>0</ShiftTimeSync0>
+          </OpMode>
+        </Dc>
+        <Eeprom>
+          <ByteSize>65536</ByteSize>
+          <ConfigData>060000CCE8030000</ConfigData>
+        </Eeprom>
+        <ImageData16x14>424dd8020000000000003600000028000000100000000e0000000100180000000000a2020000c30e0000c30e00000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d2b2d2d404141363838656666959696ffffffffffffffffff1b1d1d1b1d1d1c1e1e1b1d1d1c1e1e1b1d1d1b1d1d1b1d1d1c1e1e1719191a1c1c1416168d8e8effffffffffffffffff1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8e8f8fffffffffffffffffff1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1e20201b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1c1e1e1b1c1c1a1c1c1a1c1c1a1c1c1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d1b1d1d8d8e8effffffffffffffffff1a1c1c1a1c1c191b1b1517171618181a1c1c1a1c1c1618181d1f1f191b1b1113131a1c1c8d8e8effffffffffffffffff757676252727343636656666979898999a9a5052527a7c7c898a8a8a8b8b626464838484949494ffffffffffffffffffa5a5a53a3c3c4d4f4f9d9e9ea0a1a1a5a5a58f9090929393242626525353e5e5e54647478b8c8cffffffffffffffffff5253536c6d6d6a6c6c4143436b6c6c6465655e5f5fa6a7a76566666e6f6f4e4f4f666868929393ffffffffffffffffff1315151517171416161416161214141517171618186263631619191214141214141416168a8b8bffffffffffffffffff2d2f2f2e30302e30302e30302e30302e30302d2f2f2729292e30302e30302e30302b2d2d979898ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000</ImageData16x14>
+      </Device>
+    </Devices>
+  </Descriptions>
+</EtherCATInfo>

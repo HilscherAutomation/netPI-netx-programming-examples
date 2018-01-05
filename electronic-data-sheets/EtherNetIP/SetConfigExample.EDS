@@ -1,0 +1,172 @@
+$ EZ-EDS Version 3.11.1.20151008 Generated Electronic Data Sheet
+
+$ ****************************************************************************
+$  
+$ File:   HILSCHER NETX52-RE_EIS.EDS
+$  
+$ Author: Kai Michel, Hilscher GmbH, Hattersheim, Germany
+$         hotline@hilscher.com
+$ Date:   02.10.15
+$  
+$ ****************************************************************************
+$  
+$ ATTENTION:
+$  
+$  Changes in this file can cause configuration or communication problems.
+$  
+$ ****************************************************************************
+$  
+$ Changes:
+$  
+$  Version  Date       Name   Description
+$ -------------------------------------------------------------------------
+$  1.0      02.10.2015 NA     - created
+$  
+$ ****************************************************************************
+
+[File]
+        DescText = "EDS-File for netX 52-RE EtherNet/IP Adapter - Extended Config Example";
+        CreateDate = 10-02-2015;
+        CreateTime = 08:40:07;
+        ModDate = 10-02-2015;
+        ModTime = 08:40:09;
+        Revision = 1.1;
+        HomeURL = "www.hilscher.com";
+
+
+[Device]
+        VendCode = 283;
+        VendName = "Hilscher GmbH";
+        ProdType = 12;
+        ProdTypeStr = "Communications Adapter";
+        ProdCode = 2;
+        MajRev = 1;
+        MinRev = 1;
+        ProdName = "EIS_V3_SetConfigExample";
+        Catalog = "CatalogNumber";
+
+[Device Classification]
+        Class1 = EtherNetIP;
+
+
+[Params]
+        Param1 =
+                0,
+                ,,
+                0x0010,
+                0xC6,
+                1,
+                "Produced Data",
+                "",
+                "",
+                0,0xFF,0,
+                ,,,,
+                ,,,,
+                0;
+        Param2 =
+                0,
+                ,,
+                0x0000,
+                0xC8,
+                4,
+                "Consumed Data",
+                "",
+                "",
+                0,0xFFFFFFFF,0,
+                ,,,,
+                ,,,,
+                0;
+
+
+[Assembly]
+        Assem100 =
+                "Consuming Assembly (O2T)",
+                ,
+                ,
+                0x0000,
+                ,,
+                32,Param2;
+
+
+        Assem101 =
+                "Producing Assembly (T2O)",
+                ,
+                ,
+                0x0000,
+                ,,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1,
+                8,Param1;
+
+[Connection Manager]
+        Connection1 =
+                0x04010002,             $ Trigger and Transport
+                0x44640405,             $ Point Multicast
+                ,,Assem100,             $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                0,,                     $ config 2
+                "Exclusive Owner ",     $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C 64 2C 65";    $ path
+
+        Connection2 =
+                0x01010002,             $ Trigger and Transport
+                0x44240305,             $ Point Multicast
+                ,0,,                    $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                0,,                     $ config 2
+                "Listen Only",          $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C0 2C 65";    $ path
+
+        Connection3 =
+                0x02010002,             $ Trigger and Transport
+                0x44640305,             $ Point Multicast
+                ,0,,                    $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                0,,                     $ config 2
+                "Input Only",           $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C1 2C 65";    $ path
+
+[Capacity]
+        ConnOverhead = .004;            $ Connection Overhead
+
+        MaxIOConnections = 3;           $ Maximum number of Class 1 Connections
+        MaxMsgConnections = 6;          $ Maximum number of Class 3 Connections
+        TSpec1 = TxRx, 10, 2000;        $ packets per sec @ 10 bytes
+        TSpec2 = TxRx, 504, 1500;       $ packets per sec @ 504 bytes
+
+[DLR Class]
+        Revision = 3;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[TCP/IP Interface Class]
+        Revision = 4;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[Ethernet Link Class]
+        Revision = 4;
+        MaxInst = 2;
+        Number_Of_Static_Instances = 2;
+        Max_Number_Of_Dynamic_Instances = 0;
+        InterfaceLabel1 = "Port1";
+        InterfaceLabel2 = "Port2";
+
+$ ****************************************************************************
+$ EOF
+$ ****************************************************************************
