@@ -27,6 +27,7 @@
 
      Version   Date        Author   Description
      ----------------------------------------------------------------------------------
+      9        22.06.2018  AB       - add function prototypes to prevent compiler warnings
       8        05.01.2018  AB       - new netx driver 1.1.3
       7        17.11.2017  AB       - copying controller outputs to inputs correctly
       6        26.07.2017  AB       - clear receive mailbox before starting initialization
@@ -57,6 +58,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <sys/mman.h>
+#include <sys/stat.h>
 #include <time.h>
 
 

@@ -6,11 +6,11 @@ RUN [ "cross-build-start" ]
 
 #labeling
 LABEL maintainer="netpi@hilscher.com" \
-      version="V0.9.1.0" \
+      version="V0.9.2" \
       description="Debian(jessie) with netX real-time ethernet programming examples"
 
 #version
-ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 0.9.1.0
+ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 0.9.2
 
 #install ssh, gcc, create user "pi" and make him sudo
 RUN apt-get update  \

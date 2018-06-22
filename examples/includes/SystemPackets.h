@@ -73,4 +73,7 @@ int32_t Sys_SetMacAddressCnf(CIFX_PACKET* ptSetMacAddressCnf);
 int32_t Sys_FirmwareIdentifyCnf(CIFX_PACKET* ptFirmwareIdentifyCnf);
 int32_t Sys_HardwareInfoCnf(CIFX_PACKET* ptCnf);
 
+void DumpData(unsigned char* pbData, unsigned long ulDataLen);
+void DumpPacket(CIFX_PACKET* ptPacket);
+
 #endif /** COMPONENTS_CIFXAPPLICATIONDEMO_INCLUDES_SYSTEMPACKETS_H_ */

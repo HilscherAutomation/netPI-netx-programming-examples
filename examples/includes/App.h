@@ -59,3 +59,8 @@ typedef struct APP_DATA_Ttag {
   APP_OUTPUT_DATA_T tOutputData;
 } APP_DATA_T;
 
+uint32_t Protocol_SendFirstPacket(APP_DATA_T *ptAppData);
+uint32_t Protocol_SendLastPacket(APP_DATA_T *ptAppData);
+uint32_t Protocol_PacketHandler( APP_DATA_T *ptAppData );
+
+
