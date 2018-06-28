@@ -82,8 +82,8 @@ long SetConfigParams( void* pvPck, uint16_t usDeviceClass )
     ptSetConfig->ulWdgTime            = 1000;                                           /* Watchdog time (in milliseconds)        */
     ptSetConfig->ulVendorId           = 0x011E;                                         /* Vendor ID                              */
     ptSetConfig->ulMaxAr              = 0;                                              /* Currently not used                     */
-    ptSetConfig->ulCompleteInputSize  = 10;                                              /* Maximum amount of allowed input data   */
-    ptSetConfig->ulCompleteOutputSize = 10;                                              /* Maximum amount of allowed output data  */
+    ptSetConfig->ulCompleteInputSize  = sizeof(APP_INPUT_DATA_T);                       /* Maximum amount of allowed input data   */
+    ptSetConfig->ulCompleteOutputSize = sizeof(APP_OUTPUT_DATA_T);                      /* Maximum amount of allowed output data  */
 
 
     if (usDeviceClass == RCX_HW_DEV_CLASS_CHIP_NETX_51)
