@@ -83,9 +83,9 @@ Basic include files needed for the compilation process will be installed into fo
 
 To install a firmware package move to the folder `firmwares` and call
 
-* `dpkg -i netpi-docker-pi-pns-3.12.0.2.deb` for PROFINET IO device firmware or  
-* `dpkg -i netpi-docker-pi-eis-2.12.5.0.deb` for EtherNet/IP adapter firmware or
-* `dpkg -i netpi-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware
+* `dpkg -i netx-docker-pi-pns-3.12.0.2.deb` for PROFINET IO device firmware or  
+* `dpkg -i netx-docker-pi-eis-2.12.5.0.deb` for EtherNet/IP adapter firmware or
+* `dpkg -i netx-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware
 
 Any firmware package extracts its firmware into the folder `/opt/cifx/deviceconfig/FW/channel0`. 
 
