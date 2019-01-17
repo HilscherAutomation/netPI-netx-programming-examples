@@ -1,5 +1,5 @@
 #use latest armv7hf compatible raspbian OS version from group resin.io as base image
-FROM resin/armv7hf-debian
+FROM balenalib/armv7hf-debian:jessie
 
 #enable building ARM container on x86 machinery on the web (comment out next line if built on Raspberry) 
 RUN [ "cross-build-start" ]
