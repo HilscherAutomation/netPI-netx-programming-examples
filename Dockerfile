@@ -1,16 +1,16 @@
 #use latest armv7hf compatible raspbian OS version from group resin.io as base image
-FROM balenalib/armv7hf-debian:jessie
+FROM balenalib/armv7hf-debian:stretch
 
 #enable building ARM container on x86 machinery on the web (comment out next line if built on Raspberry) 
 RUN [ "cross-build-start" ]
 
 #labeling
 LABEL maintainer="netpi@hilscher.com" \
-      version="V0.9.3" \
+      version="V0.9.4" \
       description="Debian(jessie) with netX real-time ethernet programming examples"
 
 #version
-ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 0.9.3
+ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 0.9.4
 
 #install ssh, gcc, create user "pi" and make him sudo
 RUN apt-get update  \
