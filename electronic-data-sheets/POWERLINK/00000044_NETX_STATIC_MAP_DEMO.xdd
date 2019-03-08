@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ISO15745ProfileContainer xmlns="http://www.ethernet-powerlink.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ethernet-powerlink.org Powerlink_Main.xsd">
+  <ISO15745Profile>
+    <ProfileHeader>
+      <ProfileIdentification>EPL_Device_Profile</ProfileIdentification>
+      <ProfileRevision>1</ProfileRevision>
+      <ProfileName />
+      <ProfileSource />
+      <ProfileClassID>Device</ProfileClassID>
+      <ISO15745Reference>
+        <ISO15745Part>4</ISO15745Part>
+        <ISO15745Edition>1</ISO15745Edition>
+        <ProfileTechnology>Powerlink</ProfileTechnology>
+      </ISO15745Reference>
+    </ProfileHeader>
+    <ProfileBody fileCreationDate="2017-01-10" fileCreator="Hilscher GmbH" fileModificationDate="2019-02-20" fileModifiedBy="Hilscher GmbH" fileName="00000044_NETX_STATIC_MAP_DEMO.xdd" fileVersion="1.0" xsi:type="ProfileBody_Device_Powerlink">
+      <DeviceIdentity>
+        <vendorName>Hilscher Gesellschaft für Systemautomation mbH</vendorName>
+        <vendorID>0x00000044</vendorID>
+        <deviceFamily>
+          <label lang="en" />
+          <description lang="en" />
+        </deviceFamily>
+        <productName>NETX_STATIC_MAPPING</productName>
+        <productID>0x00000001</productID>
+        <orderNumber />
+        <specificationRevision>1.3.0</specificationRevision>
+      </DeviceIdentity>
+      <DeviceFunction>
+        <capabilities>
+          <characteristicsList>
+            <characteristic>
+              <characteristicName>
+                <label lang="en">Transfer rate</label>
+              </characteristicName>
+              <characteristicContent>
+                <label lang="en">100 MBit/s</label>
+              </characteristicContent>
+            </characteristic>
+          </characteristicsList>
+        </capabilities>
+      </DeviceFunction>
+    </ProfileBody>
+  </ISO15745Profile>
+  <ISO15745Profile>
+    <ProfileHeader>
+      <ProfileIdentification>Powerlink_Communication_Profile</ProfileIdentification>
+      <ProfileRevision>1</ProfileRevision>
+      <ProfileName />
+      <ProfileSource />
+      <ProfileClassID>CommunicationNetwork</ProfileClassID>
+      <ISO15745Reference>
+        <ISO15745Part>4</ISO15745Part>
+        <ISO15745Edition>1</ISO15745Edition>
+        <ProfileTechnology>Powerlink</ProfileTechnology>
+      </ISO15745Reference>
+    </ProfileHeader>
+    <ProfileBody fileCreationDate="2017-01-10" fileCreator="Hilscher GmbH" fileModificationDate="2019-02-20" fileModifiedBy="Hilscher GmbH" fileName="00000044_NETX_STATIC_MAP_DEMO.xdd" fileVersion="1.0" xsi:type="ProfileBody_CommunicationNetwork_Powerlink">
+      <ApplicationLayers>
+        <identity>
+          <vendorID>0x00000044</vendorID>
+          <productID>0x00000001</productID>
+        </identity>
+        <DataTypeList>
+          <defType dataType="0001">
+            <Boolean />
+          </defType>
+          <defType dataType="0002">
+            <Integer8 />
+          </defType>
+          <defType dataType="0003">
+            <Integer16 />
+          </defType>
+          <defType dataType="0004">
+            <Integer32 />
+          </defType>
+          <defType dataType="0005">
+            <Unsigned8 />
+          </defType>
+          <defType dataType="0006">
+            <Unsigned16 />
+          </defType>
+          <defType dataType="0007">
+            <Unsigned32 />
+          </defType>
+          <defType dataType="0008">
+            <Real32 />
+          </defType>
+          <defType dataType="0009">
+            <Visible_String />
+          </defType>
+          <defType dataType="0010">
+            <Integer24 />
+          </defType>
+          <defType dataType="0011">
+            <Real64 />
+          </defType>
+          <defType dataType="0012">
+            <Integer40 />
+          </defType>
+          <defType dataType="0013">
+            <Integer48 />
+          </defType>
+          <defType dataType="0014">
+            <Integer56 />
+          </defType>
+          <defType dataType="0015">
+            <Integer64 />
+          </defType>
+          <defType dataType="000A">
+            <Octet_String />
+          </defType>
+          <defType dataType="000B">
+            <Unicode_String />
+          </defType>
+          <defType dataType="000C">
+            <Time_of_Day />
+          </defType>
+          <defType dataType="000D">
+            <Time_Diff />
+          </defType>
+          <defType dataType="000F">
+            <Domain />
+          </defType>
+          <defType dataType="0016">
+            <Unsigned24 />
+          </defType>
+          <defType dataType="0018">
+            <Unsigned40 />
+          </defType>
+          <defType dataType="0019">
+            <Unsigned48 />
+          </defType>
+          <defType dataType="001A">
+            <Unsigned56 />
+          </defType>
+          <defType dataType="001B">
+            <Unsigned64 />
+          </defType>
+          <defType dataType="0401">
+            <MAC_ADDRESS />
+          </defType>
+          <defType dataType="0402">
+            <IP_ADDRESS />
+          </defType>
+          <defType dataType="0403">
+            <NETTIME />
+          </defType>
+        </DataTypeList>
+        <ObjectList>
+          <Object index="1000" name="NMT_DeviceType_U32" objectType="7" dataType="0007" defaultValue="0x0000000" accessType="const"/>
+          <Object index="1001" name="ERR_ErrorRegister_U8" objectType="7" dataType="0005" defaultValue="0" accessType="ro"/>
+          <Object index="1003" name="ERR_History_ADOM" objectType="8">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0" accessType="rw" />
+            <SubObject subIndex="01" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="02" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="03" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="04" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="05" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="06" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="07" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="08" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="09" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="0F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="10" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="11" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="12" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="13" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="14" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="15" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="16" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="17" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="18" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="19" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="1F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="20" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="21" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="22" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="23" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="24" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="25" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="26" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="27" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="28" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="29" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="2F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="30" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="31" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="32" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="33" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="34" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="35" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="36" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="37" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="38" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="39" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="3F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="40" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="41" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="42" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="43" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="44" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="45" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="46" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="47" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="48" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="49" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="4F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="50" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="51" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="52" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="53" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="54" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="55" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="56" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="57" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="58" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="59" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="5F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="60" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="61" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="62" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="63" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="64" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="65" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="66" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="67" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="68" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="69" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="6F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="70" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="71" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="72" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="73" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="74" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="75" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="76" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="77" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="78" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="79" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="7F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="80" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="81" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="82" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="83" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="84" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="85" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="86" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="87" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="88" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="89" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="8F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="90" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="91" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="92" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="93" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="94" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="95" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="96" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="97" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="98" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="99" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9A" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9B" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9C" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9D" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9E" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="9F" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="A9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AD" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="AF" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="B9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BD" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="BF" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="C9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CD" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="CF" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="D9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DD" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="DF" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="E9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="EA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="EB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="EC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="ED" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="EE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="EF" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F0" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F1" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F2" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F3" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F4" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F5" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F6" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F7" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F8" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="F9" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="FA" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="FB" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="FC" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="FD" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+            <SubObject subIndex="FE" name="ErrorEntry_DOM"  objectType="7" dataType="000f" defaultValue=""  accessType="ro" />
+          </Object>
+          <Object index="1006" name="NMT_CycleLen_U32" objectType="7" dataType="0007" defaultValue="1000" accessType="rw"/>
+          <Object index="1018" name="NMT_IdentityObject_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0x04"       accessType="const" />
+            <SubObject subIndex="01" name="VendorId_U32"    objectType="7" dataType="0007" defaultValue="0x00000044" accessType="const" />
+            <SubObject subIndex="02" name="ProductCode_U32" objectType="7" dataType="0007" defaultValue="0x00000001" accessType="const" />
+            <SubObject subIndex="03" name="RevisionNo_U32"  objectType="7" dataType="0007" defaultValue="0x00000000" accessType="const" />
+            <SubObject subIndex="04" name="SerialNo_U32"    objectType="7" dataType="0007" defaultValue="0x00000000" accessType="const" />
+          </Object>
+          <Object index="1020" name="CFM_VerifyConfiguration_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0x2" accessType="const" />
+            <SubObject subIndex="01" name="ConfDate_U32"    objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ConfTime_U32"    objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+          </Object>
+          <Object index="1030" name="NMT_InterfaceGroup_0h_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"           objectType="7" dataType="0005" defaultValue="0x9"              accessType="const" />
+            <SubObject subIndex="01" name="InterfaceIndex_U16"        objectType="7" dataType="0006" defaultValue="1"                accessType="ro"    />
+            <SubObject subIndex="02" name="InterfaceDescription_VSTR" objectType="7" dataType="0009" defaultValue="EPL Cn Interface" accessType="const" />
+            <SubObject subIndex="03" name="InterfaceType_U8"          objectType="7" dataType="0005" defaultValue="0x6"              accessType="const" />
+            <SubObject subIndex="04" name="InterfaceMtu_U16"          objectType="7" dataType="0006" defaultValue="1518"             accessType="const" />
+            <SubObject subIndex="05" name="InterfacePhysAddress_OSTR" objectType="7" dataType="000A"                                 accessType="const" />
+            <SubObject subIndex="06" name="InterfaceName_VSTR"        objectType="7" dataType="0009" defaultValue="eplcn0"           accessType="ro"    />
+            <SubObject subIndex="07" name="InterfaceOperStatus_U8"    objectType="7" dataType="0005" defaultValue="1"                accessType="ro"    />
+            <SubObject subIndex="08" name="InterfaceAdminState_U8"    objectType="7" dataType="0005" defaultValue="1"                accessType="rw"    />
+            <SubObject subIndex="09" name="Valid_BOOL"                objectType="7" dataType="0001" defaultValue="true"             accessType="rw"    />
+          </Object>
+          <Object index="1300" name="SDO_SequLayerTimeout_U32" objectType="7" dataType="0007" defaultValue="15000" highLimit="0xFFFFFFFF" lowLimit="0x00000064" accessType="rw"/>
+          <Object index="1400" name="PDO_RxCommParam_00h_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x2" accessType="const" />
+            <SubObject subIndex="01" name="NodeID_U8"         objectType="7" dataType="0005" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="MappingVersion_U8" objectType="7" dataType="0005" defaultValue="0"   accessType="ro"    />
+          </Object>
+          <Object index="1600" name="PDO_RxMappParam_00h_AU64" objectType="8">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0x4"                accessType="rw" />
+            <SubObject subIndex="01" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008000000012000" accessType="ro" />
+            <SubObject subIndex="02" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008000800022000" accessType="ro" />
+            <SubObject subIndex="03" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008001000032000" accessType="ro" />
+            <SubObject subIndex="04" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008001800042000" accessType="ro" />
+          </Object>
+          <Object index="1800" name="PDO_TxCommParam_00h_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x2" accessType="const" />
+            <SubObject subIndex="01" name="NodeID_U8"         objectType="7" dataType="0005" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="MappingVersion_U8" objectType="7" dataType="0005" defaultValue="0"   accessType="ro"    />
+          </Object>
+          <Object index="1A00" name="PDO_TxMappParam_00h_AU64" objectType="8">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0xA"                accessType="rw" />
+            <SubObject subIndex="01" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008000000012100" accessType="ro" />
+            <SubObject subIndex="02" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008000800022100" accessType="ro" />
+            <SubObject subIndex="03" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008001000032100" accessType="ro" />
+            <SubObject subIndex="04" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008001800042100" accessType="ro" />
+            <SubObject subIndex="05" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008002000052100" accessType="ro" />
+            <SubObject subIndex="06" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008002800062100" accessType="ro" />
+            <SubObject subIndex="07" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008003000072100" accessType="ro" />
+            <SubObject subIndex="08" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008003800082100" accessType="ro" />
+            <SubObject subIndex="09" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x0008004000092100" accessType="ro" />
+            <SubObject subIndex="0A" name="ObjectMapping"   objectType="7" dataType="001B" defaultValue="0x00080048000A2100" accessType="ro" />
+          </Object>
+          <Object index="1C0A" name="DLL_CNCollision_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C0B" name="DLL_CNLossSoC_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C0C" name="DLL_CNLossSoA_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C0D" name="DLL_CNLossPReq_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C0E" name="DLL_CNSoCJitter_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C0F" name="DLL_CNCRCError_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"   objectType="7" dataType="0005" defaultValue="0x3" accessType="const" />
+            <SubObject subIndex="01" name="CumulativeCnt_U32" objectType="7" dataType="0007" defaultValue="0"   accessType="rw"    />
+            <SubObject subIndex="02" name="ThresholdCnt_U32"  objectType="7" dataType="0007" defaultValue="0"   accessType="ro"    />
+            <SubObject subIndex="03" name="Threshold_U32"     objectType="7" dataType="0007" defaultValue="15"  accessType="rw"    />
+          </Object>
+          <Object index="1C13" name="DLL_CNSoCJitterRange_U32" objectType="7" dataType="0007" defaultValue="2000" accessType="rw"/>
+          <Object index="1C14" name="DLL_CNLossOfSocTolerance_U32" objectType="7" dataType="0007" defaultValue="100000" accessType="rw"/>
+          <Object index="1E40" name="NWL_IpAddrTable_0h_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"     objectType="7" dataType="0005" defaultValue="0x5"             accessType="const" />
+            <SubObject subIndex="01" name="IfIndex_U16"         objectType="7" dataType="0006" defaultValue="1"               accessType="ro"    />
+            <SubObject subIndex="02" name="Addr_IPAD"           objectType="7" dataType="0402" defaultValue="192.168.100.1"   accessType="ro"    />
+            <SubObject subIndex="03" name="NetMask_IPAD"        objectType="7" dataType="0402" defaultValue="255.255.255.0"   accessType="ro"    />
+            <SubObject subIndex="04" name="ReasmMaxSize_U16"    objectType="7" dataType="0006" defaultValue="0"               accessType="ro"    />
+            <SubObject subIndex="05" name="DefaultGateway_IPAD" objectType="7" dataType="0402" defaultValue="192.168.100.254" accessType="rw"    />
+          </Object>
+          <Object index="1E4A" name="NWL_IpGroup_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"      objectType="7" dataType="0005" defaultValue="0x2"   accessType="const" />
+            <SubObject subIndex="01" name="Forwarding_BOOL"      objectType="7" dataType="0001" defaultValue="false" accessType="ro"    />
+            <SubObject subIndex="02" name="DefaultTTL_U16"       objectType="7" dataType="0006" defaultValue="0x40"  accessType="rw"    />
+          </Object>
+          <Object index="1F82" name="NMT_FeatureFlags_U32" objectType="7" dataType="0007" defaultValue="0x000100A7" accessType="const"/>
+          <Object index="1F83" name="NMT_EPLVersion_U8" objectType="7" dataType="0005" defaultValue="0x20" accessType="const"/>
+          <Object index="1F8C" name="NMT_CurrNMTState_U8" objectType="7" dataType="0005" defaultValue="0x1c" accessType="ro"/>
+          <Object index="1F93" name="NMT_EPLNodeID_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0x2"  accessType="const" />
+            <SubObject subIndex="01" name="NodeID_U8"       objectType="7" dataType="0005" defaultValue="0x1"  accessType="ro"    />
+            <SubObject subIndex="02" name="NodeIDByHW_BOOL" objectType="7" dataType="0001" defaultValue="true" accessType="ro"    />
+          </Object>
+          <Object index="1F98" name="NMT_CycleTiming_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries"         objectType="7" dataType="0005" defaultValue="0x9"  accessType="const" />
+            <SubObject subIndex="01" name="IsochrTxMaxPayload_U16"  objectType="7" dataType="0006" defaultValue="1490" accessType="const" />
+            <SubObject subIndex="02" name="IsochrRxMaxPayload_U16"  objectType="7" dataType="0006" defaultValue="1490" accessType="const" />
+            <SubObject subIndex="03" name="PResMaxLatency_U32"      objectType="7" dataType="0007" defaultValue="2000" accessType="const" />
+            <SubObject subIndex="04" name="PReqActPayloadLimit_U16" objectType="7" dataType="0006" defaultValue="36"   accessType="rw"    />
+            <SubObject subIndex="05" name="PResActPayloadLimit_U16" objectType="7" dataType="0006" defaultValue="36"   accessType="rw"    />
+            <SubObject subIndex="06" name="ASndMaxLatency_U32"      objectType="7" dataType="0007" defaultValue="2000" accessType="const" />
+            <SubObject subIndex="07" name="MultiplCycleCnt_U8"      objectType="7" dataType="0005" defaultValue="0"    accessType="rw"    />
+            <SubObject subIndex="08" name="AsyncMTU_U16"            objectType="7" dataType="0006" defaultValue="300"  accessType="rw"    />
+            <SubObject subIndex="09" name="Prescaler_U16"           objectType="7" dataType="0006" defaultValue="2"    accessType="rw"    />
+          </Object>
+          <Object index="1F99" name="NMT_CNBasicEthernetTimeout_U32" objectType="7" dataType="0007" defaultValue="5000000" accessType="rw"/>
+          <Object index="1F9A" name="NMT_HostName_VSTR" objectType="7" dataType="0009" accessType="rw"/>
+          <Object index="1F9E" name="NMT_ResetCmd_U8" objectType="7" dataType="0005" defaultValue="0xff" accessType="rw"/>
+          <Object index="2000" name="BytesOut_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0x4"                      accessType="const" />
+            <SubObject subIndex="01" name="OutputData0"             objectType="7" dataType="0005"                    PDOmapping="default" accessType="rw"    />
+            <SubObject subIndex="02" name="OutputData1"             objectType="7" dataType="0005"                    PDOmapping="default" accessType="rw"    />
+            <SubObject subIndex="03" name="OutputData2"             objectType="7" dataType="0005"                    PDOmapping="default" accessType="rw"    />
+            <SubObject subIndex="04" name="OutputData3"             objectType="7" dataType="0005"                    PDOmapping="default" accessType="rw"    />
+          </Object>
+          <Object index="2100" name="BytesIn_REC" objectType="9">
+            <SubObject subIndex="00" name="NumberOfEntries" objectType="7" dataType="0005" defaultValue="0xA"                      accessType="const" />
+            <SubObject subIndex="01" name="InputData0"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="02" name="InputData1"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="03" name="InputData2"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="04" name="InputData3"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="05" name="InputData4"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="06" name="InputData5"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="07" name="InputData6"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="08" name="InputData7"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="09" name="InputData8"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+            <SubObject subIndex="0A" name="InputData9"              objectType="7" dataType="0005"                    PDOmapping="default" accessType="ro"    />
+          </Object>
+        </ObjectList>
+      </ApplicationLayers>
+      <TransportLayers>
+      </TransportLayers>
+      <NetworkManagement>
+        <GeneralFeatures
+          DLLFeatureMN="false"
+          DLLFeatureCN="true"
+          NMTNodeIDByHW="true"
+          NMTBootTimeNotActive="8000000"
+          NMTCycleTimeMax="1000000"
+          NMTCycleTimeMin="200"
+          NMTErrorEntries="32"
+          NMTExtNmtCmds="true"
+          NWLIPSupport="true"
+          PDORPDOChannels="1"
+          SDOCmdReadAllByIndex="false"
+          SDOCmdReadByName="false"
+          SDOCmdWriteAllByIndex="false"
+          SDOCmdWriteByName="false"
+          SDOCmdWriteMultParam="false"
+          SDOMaxConnections="5"
+          SDOMaxParallelConnections="5"
+          SDOServer="true"
+          SDOClient="false"
+          SDOSupportASnd="true"
+          SDOSupportUdpIp="true"
+          />
+        <CNFeatures
+          DLLCNFeatureMultiplex="false"
+          NMTCNSoC2PReq="0"
+          />
+        <Diagnostic>
+        </Diagnostic>
+      </NetworkManagement>
+    </ProfileBody>
+  </ISO15745Profile>
+</ISO15745ProfileContainer>

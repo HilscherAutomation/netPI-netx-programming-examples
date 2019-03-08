@@ -2,7 +2,7 @@
 
 Made for [netPI RTE 3](https://www.netiot.com/netpi/), the Raspberry Pi 3B Architecture based industrial suited Open Edge Connectivity Ecosystem
 
-### netX programmin exsample applications for PROFINET, EtherNet/IP and EtherCAT
+### netX programming example applications for PROFINET, EtherNet/IP, EtherCAT, POWERLINK and Modbus/TCP
 
 Base of this image builds [debian](https://www.balena.io/docs/reference/base-images/base-images/) with enabled [SSH](https://en.wikipedia.org/wiki/Secure_Shell) and created user 'pi'.
 
@@ -11,6 +11,8 @@ Additionally the image provides netX programming examples in source code (and as
 * PROFINET IO-device 
 * EtherNet/IP adapter
 * EtherCAT slave
+* POWERLINK slave
+* Modbus/TCP server
 
 #### Container prerequisites
 
@@ -66,6 +68,8 @@ The login directs you to the pi user home directory /home/pi with following stru
        | PNS_simpleConfig       - precompiled and executable PROFINET IO device example 
        | EIS_simpleConfig       - precompiled and executable EtherNet/IP adapter example
        | ECS_simpleConfig       - precompiled and executable EtherCAT slave example
+       | PLS_simpleConfig       - precompiled and executable POWERLINK slave example
+       | OMB_simpleConfig       - precompiled and executable Modbus/TCP server example
 ```
 ##### netX driver installation
 
@@ -86,6 +90,8 @@ To install a firmware package move to the folder `firmwares` and call
 * `dpkg -i netx-docker-pi-pns-3.12.0.2.deb` for PROFINET IO device firmware or  
 * `dpkg -i netx-docker-pi-eis-2.12.5.0.deb` for EtherNet/IP adapter firmware or
 * `dpkg -i netx-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware
+* `dpkg -i netx-docker-pi-pls-3.3.0.0.deb` for POWERLINK slave firmware
+* `dpkg -i netx-docker-pi-omb-2.6.0.6.deb` for Modbus/TCP server firmware
 
 Any firmware package extracts its firmware into the folder `/opt/cifx/deviceconfig/FW/channel0`. 
 
@@ -102,6 +108,8 @@ The following executables will be compiled
 * `PNS_simpleConfig` as PROFINET IO device demo
 * `EIS_simpleConfig` as EtherNet/IP adapter demo
 * `ECS_simpleConfig` as EtherCAT slave demo
+* `PLS_simpleConfig` as POWERLINK slave demo
+* `OMB_simpleConfig` as Modbus/TCP server demo
 
 You may be faced with the following warning during compilation process
 
@@ -124,6 +132,8 @@ To start the compiled examples call the following executeables in the pi home di
 * `sudo ./PNS_simpleConfig` for the PROFINET IO device example
 * `sudo ./EIS_simpleConfig` for the EtherNet/IP adapter example
 * `sudo ./ECS_simpleConfig` for the EtherCAT slave example
+* `sudo ./PLS_simpleConfig` for the POWERLINK slave example
+* `sudo ./OMB_simpleConfig` for the Modbus/TCP server example
 
 Each example checks if its corresponding firmware package has been installed properly and loaded into netX, else it will install and load it automatically.
 
@@ -158,6 +168,8 @@ The protocol specific dependencies are described in the manuals
 * `PROFINET_IO-Device_V3.12_Protocol_API_17_EN.pdf` for PROFINET IO device 
 * `EtherNetIP_Adapter_Protocol_API_19_EN.pdf` for EtherNet/IP adapter
 * `EtherCAT Slave V4 Protocol API 09 EN.pdf` for EtherCAT slave
+* `POWERLINK Slave V4 Protocol API 09 EN.pdf` for POWERLINK slave
+* `OpenModbusTCP Protocol API 10 EN.pdf` for Modbus TCP server
 
 located in the `manuals` folder.
 
