@@ -8,7 +8,7 @@
     $Workfile: OMB_simpleConfig.c $
    Last Modification:
     $Author : AB$
-    $Modtime: 05.01.18 19:27 $
+    $Modtime: 27.03.19 12:27 $
     $Revision$
 
    Targets:
@@ -23,22 +23,11 @@
      demo configures the server to the IP address 192.168.0.2. Make sure your 
      client is in the same subnetwork. e.g. 192.168.0.10
 
-   Changes:
-
-     Version   Date        Author   Description
-     ----------------------------------------------------------------------------------
-      9        22.06.2018  AB       - add function prototypes to prevent compiler warnings
-      8        05.01.2018  AB       - new netx driver 1.1.3
-      7        17.11.2017  AB       - copying controller outputs to inputs correctly
-      6        26.07.2017  AB       - clear receive mailbox before starting initialization
-      5        25.07.2017  AB       - checking if root
-      4        16.06.2017  AB       - added EtherNet/IP adapter PacketHandlerEIS.c example 
-                                      from team netX support to demo
-      3        08.11.2011  SD       - support of new initialization parameter (card number)
-      2        27.05.2010  SD       - Display driver version
-                                    - Routine added to demonstrate event handling
-                                    - Routine added to demonstrate host/bus state functions
-      1        ??.??.????  ??       - Initial Version
+  Changes:
+    Date        Description
+    -----------------------------------------------------------------------------------
+    2019-03-27  example simplified
+    2019-03-08  initial version
 
 **************************************************************************************/
 
@@ -73,80 +62,6 @@ typedef struct SYNC_CALLBACK_DATAtag {
 } SYNC_CALLBACK_DATA;
 
 APP_DATA_T tAppData = {0};
-
-
-
-/*****************************************************************************/
-/*! Callback rountine for events
-*   \param ulNotification Sync command
-*   \param ulDataLen      Length of buffer referenced by pvData
-*   \param pvData         Data
-*   \param pvUser         User pointer                                       */
-/*****************************************************************************/
-void APIENTRY EventCallback (uint32_t ulNotification, uint32_t ulDataLen, void* pvData, void* pvUser)
-{
-  UNREFERENCED_PARAMETER(pvData);
-  UNREFERENCED_PARAMETER(ulDataLen);
-
-  switch (ulNotification)
-  {
-    case CIFX_NOTIFY_RX_MBX_FULL:
-      printf("EventCallback(): CIFX_NOTIFY_RX_MBX_FULL\n");
-    break;
-
-    case CIFX_NOTIFY_TX_MBX_EMPTY:
-      printf("EventCallback(): CIFX_NOTIFY_TX_MBX_EMPTY\n");
-    break;
-
-    case CIFX_NOTIFY_PD0_IN:
-      printf("EventCallback(): CIFX_NOTIFY_PD0_IN\n");
-    break;
-
-    case CIFX_NOTIFY_PD0_OUT:
-      printf("EventCallback(): CIFX_NOTIFY_PD0_OUT\n");
-    break;
-
-    case CIFX_NOTIFY_PD1_IN:
-      printf("EventCallback(): CIFX_NOTIFY_PD1_IN\n");
-    break;
-
-    case CIFX_NOTIFY_PD1_OUT:
-      printf("EventCallback(): CIFX_NOTIFY_PD1_OUT\n");
-    break;
-
-    default:
-      printf("EventCallback(): UNKNOWN Event, Event number %lu, pvUser 0x%08lx \n", (long unsigned int)ulNotification, (unsigned long)pvUser);
-    break;
-  }
-}
-
-
-/*****************************************************************************/
-/*! Callback rountine for sync events
-*   \param ulNotification Sync command
-*   \param ulDataLen      Length of buffer referenced by pvData
-*   \param pvData         Data
-*   \param pvUser         User pointer                                       */
-/*****************************************************************************/
-void APIENTRY SyncEventCallback (uint32_t ulNotification, uint32_t ulDataLen, void* pvData, void* pvUser)
-{
-  int32_t             lRet         = 0;
-  uint32_t            ulErrorCount = 0;
-  SYNC_CALLBACK_DATA* ptSynchData  = (SYNC_CALLBACK_DATA*)pvUser;
-
-  UNREFERENCED_PARAMETER(pvData);
-  UNREFERENCED_PARAMETER(ulDataLen);
-  UNREFERENCED_PARAMETER(ulNotification);
-
-  printf("SyncCallback()\n");
-
-  lRet = xChannelSyncState( ptSynchData->hDevice, CIFX_SYNC_ACKNOWLEDGE_CMD, 1000, &ulErrorCount);
-  if(CIFX_NO_ERROR != lRet)
-  {
-    printf("Error signaling the Sync, lRet = 0x%08X\n", (unsigned int)lRet);
-  }
-}
-
 
 static int kbhit()
 {
@@ -189,40 +104,6 @@ void ShowError( int32_t lError )
     printf("Error: 0x%X, <%s>\n", (unsigned int)lError, szError);
   }
 }
-
-
-/*****************************************************************************/
-/*! Function to display driver information
- *   \param  hDriver  Handle to cifX driver
- *   \param  ptVTable Pointer to cifX API function table
- *   \return CIFX_NO_ERROR on success                                        */
-/*****************************************************************************/
-void DisplayDriverInformation (void)
-{
-  int32_t            lRet             = CIFX_NO_ERROR;
-  DRIVER_INFORMATION tDriverInfo      = {{0}};
-  char               szDrvVersion[32] = "";
-  CIFXHANDLE         hDriver          = NULL;
-
-  if (CIFX_NO_ERROR == (lRet = xDriverOpen(&hDriver)))
-  {
-    printf("\n---------- Display Driver Version ----------\n");
-    if( CIFX_NO_ERROR != (lRet = xDriverGetInformation(NULL, sizeof(tDriverInfo), &tDriverInfo)) )
-      ShowError( lRet);
-    else if ( CIFX_NO_ERROR != (lRet = cifXGetDriverVersion( sizeof(szDrvVersion)/sizeof(*szDrvVersion), szDrvVersion)))
-      ShowError( lRet);
-    else
-      printf("Driver Version: %s, based on %.32s \n\n", szDrvVersion, tDriverInfo.abDriverVersion);
-
-    /* close previously opened driver */
-    xDriverClose(hDriver);
-
-  }
-
-  printf(" State = 0x%08X\r\n", (unsigned int)lRet);
-  printf("----------------------------------------------------\r\n");
-}
-
 
 /*****************************************************************************/
 /*! Function to demonstrate the board/channel enumeration
@@ -290,176 +171,6 @@ int32_t EnumBoardDemo(void)
     }
 
     /* close previously opened driver */
-    xDriverClose(hDriver);
-  }
-
-  printf(" State = 0x%08X\r\n", (unsigned int)lRet);
-  printf("----------------------------------------------------\r\n");
-
-  return lRet;
-}
-
-/*****************************************************************************/
-/*! Function to demonstrate system channel functionality (PacketTransfer)
-*   \return CIFX_NO_ERROR on success                                         */
-/*****************************************************************************/
-int32_t SysdeviceDemo()
-{
-#ifdef DEBUG
-	printf("%s() called\n", __FUNCTION__);
-#endif
-  CIFXHANDLE hDriver = NULL;
-  int32_t    lRet    = xDriverOpen(&hDriver);
-
-  printf("---------- System Device handling demo ----------\r\n");
-
-  if(CIFX_NO_ERROR == lRet)
-  {
-    /* Driver/Toolkit successfully opened */
-    CIFXHANDLE hSys = NULL;
-    lRet = xSysdeviceOpen(hDriver, CIFX_DEV, &hSys);
-
-    if(CIFX_NO_ERROR != lRet)
-    {
-      printf("Error opening SystemDevice!\r\n");
-
-    } else
-    {
-      SYSTEM_CHANNEL_SYSTEM_INFO_BLOCK    tSysInfoBlock = {{0}};
-      SYSTEM_CHANNEL_SYSTEM_INFORMATION   tSysInfo      = {0};
-      SYSTEM_CHANNEL_SYSTEM_CONTROL_BLOCK tControlBlock = {0};
-      SYSTEM_CHANNEL_SYSTEM_STATUS_BLOCK  tStatusBlock  = {0};
-
-      /* System channel successfully opened, try to read the System Info Block */
-      if( CIFX_NO_ERROR != (lRet = xSysdeviceInfo(hSys, CIFX_INFO_CMD_SYSTEM_INFO_BLOCK, sizeof(tSysInfoBlock), &tSysInfoBlock)))
-      {
-        printf("Error querying system information block\r\n");
-      } else
-      {
-        printf("System Channel Info Block:\r\n");
-        printf("==========================\r\n");
-        printf("DPM Cookie       : %.4s\r\n",(char*)tSysInfoBlock.abCookie);
-        printf("DPM Size         : %lu\r\n",(long unsigned int)tSysInfoBlock.ulDpmTotalSize);
-        printf("Device Number    : %lu\r\n",(long unsigned int)tSysInfoBlock.ulDeviceNumber);
-        printf("Serial Number    : %lu\r\n",(long unsigned int)tSysInfoBlock.ulSerialNumber);
-        printf("HW Options       : 0x%04X 0x%04X 0x%04X 0x%04X\r\n",
-               tSysInfoBlock.ausHwOptions[0], tSysInfoBlock.ausHwOptions[1],
-               tSysInfoBlock.ausHwOptions[2], tSysInfoBlock.ausHwOptions[3]);
-        printf("Manufacturer     : %u\r\n", tSysInfoBlock.usManufacturer);
-        printf("Production Date  : %u\r\n", tSysInfoBlock.usProductionDate);
-        printf("Device Class     : %u\r\n", tSysInfoBlock.usDeviceClass);
-        printf("HW Revision      : %u\r\n", tSysInfoBlock.bHwRevision);
-        printf("HW Compatibility : %u\r\n", tSysInfoBlock.bHwCompatibility);
-
-        printf("License Flags 1  : 0x%08X\r\n", tSysInfoBlock.ulLicenseFlags1);
-        printf("License Flags 2  : 0x%08X\r\n", tSysInfoBlock.ulLicenseFlags2);
-        printf("LicenseID        : 0x%04X\r\n", tSysInfoBlock.usNetxLicenseID);
-        printf("LicenseFlags     : 0x%04X\r\n", tSysInfoBlock.usNetxLicenseFlags);
-        printf("==========================\r\n");
-      }
-
-      /* Try to read the System Information */
-      if( CIFX_NO_ERROR != (lRet = xSysdeviceInfo(hSys, CIFX_INFO_CMD_SYSTEM_INFORMATION, sizeof(tSysInfo), &tSysInfo)))
-      {
-        printf("Error querying system information\r\n");
-      } else
-      {
-        printf("System Information:\r\n");
-        printf("===================\r\n");
-        printf("System Error     : 0x%08X\r\n", tSysInfo.ulSystemError);
-        printf("DPM Size         : %lu\r\n",    (long unsigned int)tSysInfo.ulDpmTotalSize);
-        printf("Mailbox size     : %lu\r\n",    (long unsigned int)tSysInfo.ulMBXSize);
-        printf("Device Number    : %lu\r\n",    (long unsigned int)tSysInfo.ulDeviceNumber);
-        printf("Serial Number    : %lu\r\n",    (long unsigned int)tSysInfo.ulSerialNumber);
-        printf("Open Count       : %lu\r\n",    (long unsigned int)tSysInfo.ulOpenCnt);
-        printf("===================\r\n");
-      }
-
-      /* Try to read the System Control Block */
-      if( CIFX_NO_ERROR != (lRet = xSysdeviceInfo(hSys, CIFX_INFO_CMD_SYSTEM_CONTROL_BLOCK, sizeof(tControlBlock), &tControlBlock)))
-      {
-        printf("Error querying system control block\r\n");
-      } else
-      {
-        printf("System Control Block:\r\n");
-        printf("=====================\r\n");
-        printf("Command COS      : 0x%08X\r\n", tControlBlock.ulSystemCommandCOS);
-        printf("Reserved         : 0x%08X\r\n", tControlBlock.ulReserved);
-        printf("=====================\r\n");
-      }
-
-      printf("Waiting 2s to let netX calculate CPU load!\r\n");
-      sleep(2);
-
-      /* Try to read the System Status Block */
-      if( CIFX_NO_ERROR != (lRet = xSysdeviceInfo(hSys, CIFX_INFO_CMD_SYSTEM_STATUS_BLOCK, sizeof(tStatusBlock), &tStatusBlock)))
-      {
-        printf("Error querying system status block\r\n");
-      } else
-      {
-        printf("System Status Block:\r\n");
-        printf("====================\r\n");
-        printf("System COS       : 0x%08X\r\n", tStatusBlock.ulSystemCOS);
-        printf("System Status    : 0x%08X\r\n", tStatusBlock.ulSystemStatus);
-        printf("System Error     : 0x%08X\r\n", tStatusBlock.ulSystemError);
-        printf("Time since start : %lu\r\n",    (long unsigned int)tStatusBlock.ulTimeSinceStart);
-        printf("CPU Load [%%]     : %.2f\r\n",  (float)tStatusBlock.usCpuLoad / 100);
-        printf("====================\r\n");
-      }
-
-      unsigned long ulSendPktCount = 0;
-      unsigned long ulRecvPktCount = 0;
-
-      printf("\r\n");
-      printf("Trying to read Security Eeprom:\r\n");
-      printf("===============================\r\n");
-
-
-      /* Read Security EEPROM zone 1*/
-      xSysdeviceGetMBXState(hSys, (TLR_UINT32*)&ulRecvPktCount, (TLR_UINT32*)&ulSendPktCount);
-      printf("System Mailbox State: MaxSend = %lu, Pending Receive = %lu\r\n",
-             ulSendPktCount, ulRecvPktCount);
-
-      RCX_SECURITY_EEPROM_READ_REQ_T tCryptoRead    = {{0}};
-      RCX_SECURITY_EEPROM_READ_CNF_T tCryptoReadCnf = {{0}};
-
-      tCryptoRead.tHead.ulDest   = HOST_TO_LE32(RCX_PACKET_DEST_SYSTEM);
-      tCryptoRead.tHead.ulLen    = HOST_TO_LE32(sizeof(tCryptoRead.tData));
-      tCryptoRead.tHead.ulCmd    = HOST_TO_LE32(RCX_SECURITY_EEPROM_READ_REQ);
-      tCryptoRead.tData.ulZoneId = HOST_TO_LE32(1);
-
-      if(CIFX_NO_ERROR != (lRet = xSysdevicePutPacket(hSys, (CIFX_PACKET*)&tCryptoRead, 10)))
-      {
-        printf("Error sending packet to device!\r\n");
-      } else
-      {
-        printf("Send Packet (Read Crypto Flash Zone 1):\r\n");
-        DumpPacket((CIFX_PACKET*)&tCryptoRead);
-
-        xSysdeviceGetMBXState(hSys, (TLR_UINT32*)&ulRecvPktCount, (TLR_UINT32*)&ulSendPktCount);
-        printf("System Mailbox State: MaxSend = %lu, Pending Receive = %lu\r\n",
-              ulSendPktCount, ulRecvPktCount);
-
-        if(CIFX_NO_ERROR != (lRet = xSysdeviceGetPacket(hSys, sizeof(tCryptoReadCnf), (CIFX_PACKET*)&tCryptoReadCnf, 20)) )
-        {
-          printf("Error getting packet from device! (lRet=0x%08X)\r\n",(unsigned int)lRet);
-        } else
-        {
-          printf("Received Packet (Read Crypto Flash Zone 1):\r\n");
-          DumpPacket((CIFX_PACKET*)&tCryptoReadCnf);
-
-          xSysdeviceGetMBXState(hSys, (TLR_UINT32*)&ulRecvPktCount, (TLR_UINT32*)&ulSendPktCount);
-          printf("System Mailbox State: MaxSend = %lu, Pending Receive = %lu\r\n",
-                ulSendPktCount, ulRecvPktCount);
-        }
-      }
-
-      printf("===============================\r\n");
-      printf("\r\n");
-
-      xSysdeviceClose(hSys);
-    }
-
     xDriverClose(hDriver);
   }
 
@@ -660,244 +371,6 @@ int32_t ChannelDemo()
 }
 
 /*****************************************************************************/
-/*! Function to demonstrate control/status block functionality
-*   \return CIFX_NO_ERROR on success                                         */
-/*****************************************************************************/
-int32_t BlockDemo( void)
-{
-  CIFXHANDLE hDriver = NULL;
-  int32_t    lRet    = xDriverOpen(&hDriver);
-#ifdef DEBUG
-	printf("%s() called\n", __FUNCTION__);
-#endif
-  printf("\n--- Read / Write Block Information ---\r\n");
-
-  /* Open channel */
-  if(CIFX_NO_ERROR == lRet)
-  {
-    CIFXHANDLE hDevice = NULL;
-    lRet = xChannelOpen(NULL, CIFX_DEV, 0, &hDevice);
-    if(lRet != CIFX_NO_ERROR)
-    {
-      printf("Error opening Channel!\r\n");
-    } else
-    {
-      unsigned char abBuffer[4] = {0};
-
-      /* Read / Write control block */
-      printf("Read CONTROL Block \r\n");
-      memset( abBuffer, 0, sizeof(abBuffer));
-      lRet = xChannelControlBlock( hDevice, CIFX_CMD_READ_DATA, 0, 4, &abBuffer[0]);
-
-      DumpData(abBuffer, 4);
-
-      printf("Write CONTROL Block \r\n");
-      lRet = xChannelControlBlock( hDevice, CIFX_CMD_WRITE_DATA, 0, 4, &abBuffer[0]);
-
-      printf("Read COMMON Status Block \r\n");
-      memset( abBuffer, 0, sizeof(abBuffer));
-      lRet = xChannelCommonStatusBlock( hDevice, CIFX_CMD_READ_DATA, 0, 4, &abBuffer[0]);
-
-      DumpData(abBuffer, 4);
-
-      printf("Write COMMON Status Block \r\n");
-      lRet = xChannelCommonStatusBlock( hDevice, CIFX_CMD_WRITE_DATA, 0, 4, &abBuffer[0]);
-
-      /* this is expected to fail, as this block must not be written by Host */
-      if(CIFX_NO_ERROR != lRet)
-        printf("Error writing to common status block. lRet = 0x%08X\r\n", (unsigned int)lRet);
-
-      printf("Read EXTENDED Status Block \r\n");
-      memset( abBuffer, 0, sizeof(abBuffer));
-      lRet = xChannelExtendedStatusBlock( hDevice, CIFX_CMD_READ_DATA, 0, 4, &abBuffer[0]);
-      DumpData(abBuffer, 4);
-
-      printf("Write EXTENDED Status Block \r\n");
-      lRet = xChannelExtendedStatusBlock( hDevice, CIFX_CMD_WRITE_DATA, 0, 4, &abBuffer[0]);
-
-      /* this is expected to fail, as this block must not be written by Host */
-      if(CIFX_NO_ERROR != lRet)
-        printf("Error writing to extended status block. lRet = 0x%08X\r\n", (unsigned int)lRet);
-
-      xChannelClose(hDevice);
-    }
-    xDriverClose(hDriver);
-  }
-  return lRet;
-}
-
-
-/*****************************************************************************/
-/*! Function to demonstrate bus / host state
-*   \return CIFX_NO_ERROR on success                                         */
-/*****************************************************************************/
-int32_t StateDemo (void)
-{
-  CIFXHANDLE    hDriver  = NULL;
-  CIFXHANDLE    hChannel = NULL;
-  int32_t       lRet     = xDriverOpen(&hDriver);
-
-  printf("\n--- Set Bus / Host State Demo ---\n");
-
-  if (CIFX_NO_ERROR == lRet)
-  {
-    /* Open channel */
-    if( CIFX_NO_ERROR != (lRet = xChannelOpen(hDriver, "cifX0", 0, &hChannel)))
-    {
-      printf("Error opening Channel!\n");
-
-    } else
-    {
-      uint32_t ulState  = 0;
-
-      /* Set Host ready */
-      lRet = xChannelHostState( hChannel, CIFX_HOST_STATE_READY, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-  	    printf("Error CIFX_HOST_STATE_READY, state %lu, error 0x%08X !\n", (long unsigned int)ulState, (unsigned int)lRet);
-      else
-        printf("Set CIFX_HOST_STATE_READY!\n");
-
-      /* Get Host state */
-      lRet = xChannelHostState( hChannel, CIFX_HOST_STATE_READ, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-  	    printf("Error CIFX_HOST_STATE_READ, state %lu, error 0x%08X !\n", (long unsigned int)ulState, (unsigned int)lRet);
-      else
-        printf("CIFX_HOST_STATE_READ, state %lu !\n", (long unsigned int)ulState);
-
-      /* Set Bus state on */
-      lRet = xChannelBusState  (hChannel, CIFX_BUS_STATE_ON, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-        printf("Error CIFX_BUS_STATE_ON, state %lu, error 0x%08X !\n", (long unsigned int)ulState, (unsigned int)lRet);
-      else
-        printf("CIFX_BUS_STATE_ON, state %lul !\n", (long unsigned int)ulState);
-
-      /* Set Bus state off */
-      lRet = xChannelBusState  (hChannel, CIFX_BUS_STATE_OFF, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-        printf("Error CIFX_BUS_STATE_OFF, state %lu, error 0x%08X !\n", (long unsigned int)ulState, (unsigned int)lRet);
-      else
-        printf("CIFX_BUS_STATE_OFF, state %lu !\n", (long unsigned int)ulState);
-
-      /* Set Host not ready */
-      lRet = xChannelHostState(hChannel, CIFX_HOST_STATE_NOT_READY, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-  	    printf("Error CIFX_HOST_STATE_NOT_READY, state %lu, error 0x%08X !\n", (long unsigned int)ulState,(unsigned int)lRet);
-      else
-        printf("Set CIFX_HOST_STATE_NOT_READY!\n");
-
-      /* Get Host state */
-      lRet = xChannelHostState( hChannel, CIFX_HOST_STATE_READ, &ulState, 1000);
-      if (CIFX_NO_ERROR != lRet)
-  	    printf("Error CIFX_HOST_STATE_READ, state %lu, error 0x%08X !\n", (long unsigned int)ulState, (unsigned int)lRet);
-      else
-        printf("CIFX_HOST_STATE_READ, state %lu !\n", (long unsigned int)ulState);
-
-      xChannelClose(hChannel);
-    }
-    xDriverClose(hDriver);
-  }
-  printf(" State = 0x%08X\n", (unsigned int)lRet);
-  printf("----------------------------------------------------\n");
-
-  return lRet;
-}
-
-
-/*****************************************************************************/
-/*! Function to demonstrate event handling
-*   \return CIFX_NO_ERROR on success                                         */
-/*****************************************************************************/
-void TestEventHandling(void)
-{
-  CIFXHANDLE    hDriver  = NULL;
-  CIFXHANDLE    hDevice  = NULL;
-  int32_t       lRet     = xDriverOpen(&hDriver);
-  int           iIdx     = 0;
-
-  printf("\n--- Event handling demo ---\r\n");
-
-  /* Open channel */
-  if (CIFX_NO_ERROR == lRet)
-  {
-    lRet = xChannelOpen(hDriver, "cifX0", 0, &hDevice);
-    if(lRet != CIFX_NO_ERROR)
-    {
-      /* Read driver error description */
-      ShowError( lRet);
-    } else
-    {
-      uint32_t           ulState    = 0;
-      SYNC_CALLBACK_DATA tSynchData = {0};
-
-      tSynchData.hDevice  = hDevice;
-      /* Register for events */
-      if( (CIFX_NO_ERROR != (lRet = xChannelRegisterNotification( hDevice, CIFX_NOTIFY_RX_MBX_FULL,   EventCallback,      (void*)1))) ||
-          (CIFX_NO_ERROR != (lRet = xChannelRegisterNotification( hDevice, CIFX_NOTIFY_TX_MBX_EMPTY,  EventCallback,      (void*)2))) ||
-          (CIFX_NO_ERROR != (lRet = xChannelRegisterNotification( hDevice, CIFX_NOTIFY_PD0_IN,        EventCallback,      (void*)3))) ||
-          (CIFX_NO_ERROR != (lRet = xChannelRegisterNotification( hDevice, CIFX_NOTIFY_PD0_OUT,       EventCallback,      (void*)5))) ||
-          (CIFX_NO_ERROR != (lRet = xChannelRegisterNotification( hDevice, CIFX_NOTIFY_SYNC,          SyncEventCallback,  (void*)&tSynchData))) )
-      {
-        /* Failed to register one of the events */
-        /* Read driver error description        */
-        ShowError( lRet);
-      } else
-      {
-        /* Get actual host state */
-        if( (lRet = xChannelHostState( hDevice, CIFX_HOST_STATE_READ, &ulState, 0L)) != CIFX_NO_ERROR)
-        {
-          /* Read driver error description */
-          ShowError( lRet);
-        }
-
-        /* Set host ready */
-        if( (lRet = xChannelHostState( hDevice, CIFX_HOST_STATE_READY, NULL, 2000L)) != CIFX_NO_ERROR)
-        {
-          /* Read driver error description */
-          ShowError( lRet);
-        }
-
-        for (iIdx=0; iIdx<10; iIdx++)
-        {
-          CIFX_PACKET tSendPkt = {{0}};
-          xChannelPutPacket(hDevice, &tSendPkt, 10);
-          xChannelIORead(hDevice, 0, 0, sizeof(tSendPkt), &tSendPkt, 10);
-          xChannelIOWrite(hDevice, 0, 0, sizeof(tSendPkt), &tSendPkt, 10);
-        }
-
-        /*-------------------*/
-        /* Unregister Events */
-        /*-------------------*/
-        lRet = xChannelUnregisterNotification( hDevice, CIFX_NOTIFY_RX_MBX_FULL);
-        if( CIFX_NO_ERROR != lRet)
-          printf("Error in Unregister CIFX_NOTIFY_RX_MBX_FULL event, Error = 0x%08X", (unsigned int)lRet);
-
-        lRet = xChannelUnregisterNotification( hDevice, CIFX_NOTIFY_TX_MBX_EMPTY);
-        if( CIFX_NO_ERROR != lRet)
-          printf("Error in Unregister CIFX_NOTIFY_TX_MBX_EMPTY event, Error = 0x%08X", (unsigned int)lRet);
-
-        lRet = xChannelUnregisterNotification( hDevice, CIFX_NOTIFY_PD0_IN);
-        if( CIFX_NO_ERROR != lRet)
-          printf("Error in Unregister CIFX_NOTIFY_PD0_IN event, Error = 0x%08X", (unsigned int)lRet);
-
-        lRet = xChannelUnregisterNotification( hDevice, CIFX_NOTIFY_PD0_OUT);
-        if( CIFX_NO_ERROR != lRet)
-          printf("Error in Unregister CIFX_NOTIFY_PD0_OUT event, Error = 0x%08X", (unsigned int)lRet);
-
-        lRet = xChannelUnregisterNotification( hDevice, CIFX_NOTIFY_SYNC);
-        if( CIFX_NO_ERROR != lRet)
-          printf("Error in Unregister CIFX_NOTIFY_SYNC event, Error = 0x%08X", (unsigned int)lRet);
-      }
-
-      /* Close channel */
-      if( hDevice != NULL)
-        xChannelClose(hDevice);
-    }
-    xDriverClose(hDriver);
-  }
-}
-
-
-/*****************************************************************************/
 /*! Main entry function
 *   \return 0                                                                */
 /*****************************************************************************/
@@ -960,38 +433,18 @@ int main(int argc, char* argv[])
     }
   }
 
-
   /* Initialize the cifX device driver */
   lRet = cifXDriverInit(&init);
 
   if(CIFX_NO_ERROR == lRet)
   {
-
-    /* Display version */
-    DisplayDriverInformation();
-
     /* Demonstrate the board/channel enumeration */
     EnumBoardDemo();
 
-    /* Demonstrate system channel functionality */
-    SysdeviceDemo();
-
     /* Demonstrate communication channel functionality */
     ChannelDemo();
-
-    /* Demonstrate control/status block functionality */
-    BlockDemo();
-
-    /* Demonstrate event handling */
-    TestEventHandling();
-
-    /* Demonstrate host/bus state functions */
-    StateDemo ();
-
   }
 
   cifXDriverDeinit();
   return 0;
 }
-
-

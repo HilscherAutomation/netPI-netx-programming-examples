@@ -17,7 +17,7 @@ Exclusion of Liability for this demo software:
 Copyright (c) Hilscher Gesellschaft fuer Systemautomation mbH. All Rights Reserved.
 
 ***************************************************************************************
-  $Id: PacketHandlerOMB.c 2458 2017-01-13 11:18:07Z Jin $:
+  $Id: PacketHandlerOMB.c 2458 2019-03-27 11:18:07Z PST $:
 
   Description:
     Protocol PacketHandler
@@ -25,8 +25,8 @@ Copyright (c) Hilscher Gesellschaft fuer Systemautomation mbH. All Rights Reserv
   Changes:
     Date        Description
     -----------------------------------------------------------------------------------
-    2016-11-23  initial version
-    2017-01-27  OMB specific configuration
+    2019-03-27  example simplified
+    2019-03-08  initial version
 
 **************************************************************************************/
 
@@ -89,7 +89,7 @@ static uint32_t Omb_SendConfig_req(CIFXHANDLE hChannel, CIFX_PACKET *ptPkt, uint
   ptConfigReq->tHead.ulExt              = 0;
 
   ptConfigReq->tData.ulSystemFlags      = OMB_OMBTASK_SYS_FLAG_COM_CONTROLLED_RELEASE;
-  ptConfigReq->tData.ulWdgTime          = 1000;  /* Host watchdog time in ms */
+  ptConfigReq->tData.ulWdgTime          = 2000;  /* Host watchdog time in ms */
 
   ptConfigReq->tData.tOmbConfig.ulOpenServerSockets = 16;
   ptConfigReq->tData.tOmbConfig.ulAnswerTimeout = 20;
@@ -148,14 +148,9 @@ static uint32_t Omb_SendConfig_req(CIFXHANDLE hChannel, CIFX_PACKET *ptPkt, uint
 uint32_t Protocol_SendFirstPacket(APP_DATA_T *ptAppData)
 {
   uint32_t lRet=RCX_S_OK;
-
-#ifdef MAC_NOT_AVAILABLE
-  uint8_t abMacAddr[6] = { 0x00, 0x02, 0xA2, 0x2F, 0x90, 0x58 };
-  lRet = Sys_SetMacAddressReq(ptAppData->hChannel[0], &ptAppData->tPkt, ptAppData->ulSendPktCnt++, &abMacAddr[0]);
-#else
-  lRet = Sys_EmptyPacketReq(ptAppData->hChannel[0], &ptAppData->tPkt, ptAppData->ulSendPktCnt++, RCX_REGISTER_APP_REQ);
-#endif
-
+  lRet = Omb_SendConfig_req(ptAppData->hChannel[0],
+                            &ptAppData->tPkt,
+                            ptAppData->ulSendPktCnt++);
   return lRet;
 }
 
@@ -163,11 +158,11 @@ uint32_t Protocol_SendFirstPacket(APP_DATA_T *ptAppData)
 uint32_t Protocol_SendLastPacket(APP_DATA_T *ptAppData)
 {
   uint32_t lRet=RCX_S_OK;
+  lRet = Sys_StartStopCommReq(ptAppData->hChannel[0],
+                              &ptAppData->tPkt,
+                              ptAppData->ulSendPktCnt++,
+                              false);
 
-  lRet = Sys_EmptyPacketReq(ptAppData->hChannel[0],
-                            &ptAppData->tPkt,
-                            ptAppData->ulSendPktCnt++,
-                            RCX_UNREGISTER_APP_REQ);
   return lRet;
 }
 
@@ -183,16 +178,6 @@ uint32_t Protocol_PacketHandler( APP_DATA_T *ptAppData )
   {
     switch( ptAppData->tPkt.tHeader.ulCmd )
     {
-    case RCX_SET_MAC_ADDR_CNF:
-      lRet = Sys_SetMacAddressCnf(&ptAppData->tPkt);
-      if(CIFX_NO_ERROR == lRet)
-      {
-        lRet = Sys_EmptyPacketReq(ptAppData->hChannel[0],
-                                  &ptAppData->tPkt,
-                                  ptAppData->ulSendPktCnt++,
-                                  RCX_REGISTER_APP_REQ);
-      }
-      break;
     case RCX_START_STOP_COMM_CNF:
       lRet = ptAppData->tPkt.tHeader.ulState;
       if(ptAppData->fRunning == false)
@@ -202,34 +187,6 @@ uint32_t Protocol_PacketHandler( APP_DATA_T *ptAppData )
       else 
       {
         ptAppData->fRunning = false;
-      }
-      break;
-
-    case RCX_FIRMWARE_IDENTIFY_CNF:
-      lRet = Sys_FirmwareIdentifyCnf(&ptAppData->tPkt);
-      break;
-
-    case RCX_HW_HARDWARE_INFO_CNF:
-      lRet = Sys_HardwareInfoCnf(&ptAppData->tPkt);
-      break;
-
-    case RCX_REGISTER_APP_CNF:
-      lRet = Sys_RegisterAppCnf(&ptAppData->tPkt );
-      if(CIFX_NO_ERROR == lRet)
-      {
-        lRet = Omb_SendConfig_req(ptAppData->hChannel[0],
-                                  &ptAppData->tPkt,
-                                  ptAppData->ulSendPktCnt++);
-      }
-      break;
-    case RCX_UNREGISTER_APP_CNF:
-      lRet = ptAppData->tPkt.tHeader.ulState;
-      if(CIFX_NO_ERROR == lRet)
-      {
-        Sys_StartStopCommReq(ptAppData->hChannel[0],
-                             &ptAppData->tPkt,
-                             ptAppData->ulSendPktCnt++,
-                             false);
       }
       break;
 
@@ -253,10 +210,6 @@ uint32_t Protocol_PacketHandler( APP_DATA_T *ptAppData )
                                     ptAppData->ulSendPktCnt++,
                                     true);
       }
-      break;
-
-    case RCX_LINK_STATUS_CHANGE_IND:
-      Sys_LinkStatusChangeInd(ptAppData->hChannel[0], &ptAppData->tPkt);
       break;
 
     default:
@@ -288,4 +241,3 @@ uint32_t Protocol_PacketHandler( APP_DATA_T *ptAppData )
 
   return lRet;
 }
-
