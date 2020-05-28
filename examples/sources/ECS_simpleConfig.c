@@ -25,6 +25,7 @@
 
      Version   Date        Author   Description
      -------------------------------------------------------------------------------------
+     12        28.05.2020  AB       - changed to latest firmware
      11        28.05.2020  AB       - changed to latest driver
      10        08.04.2019  PST      - example simplified
       9        22.06.2018  AB       - add function prototypes to prevent compiler warnings
@@ -512,8 +513,8 @@ int main(int argc, char* argv[])
   while( (lRet = stat("/opt/cifx/deviceconfig/FW/channel0/R160F000.nxf",&buffer)) != 0) {
     printf("\nThe EtherCAT slave firmware has not been found installed.\n");
     printf("Installing the firmware now.\n");
-    if( system("dpkg -i ./firmwares/netx-docker-pi-ecs-4.7.0.2.deb") == -1) {
-      printf("Installing the firmware failed. Check if firmware 'netx-docker-pi-ecs-4.7.0.2.deb' package is located in folder './firmwares'(relative path to demo app).\n");
+    if( system("dpkg -i ./firmwares/netx-docker-pi-ecs-4.8.0.3.deb") == -1) {
+      printf("Installing the firmware failed. Check if firmware 'netx-docker-pi-ecs-4.8.0.3.deb' package is located in folder './firmwares'(relative path to demo app).\n");
       return 0;
     }
   }
