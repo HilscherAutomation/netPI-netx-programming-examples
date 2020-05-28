@@ -1,16 +1,22 @@
-#use latest armv7hf compatible raspbian OS version from group resin.io as base image
-FROM balenalib/armv7hf-debian:stretch
+#use armv7hf compatible base image
+FROM balenalib/armv7hf-debian:buster-20191223
 
-#enable building ARM container on x86 machinery on the web (comment out next line if built on Raspberry) 
-RUN [ "cross-build-start" ]
+#dynamic build arguments coming from the /hooks/build file
+ARG BUILD_DATE
+ARG VCS_REF
+
+#metadata labels
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/HilscherAutomation/netPI-netx-programming-examples" \
+      org.label-schema.vcs-ref=$VCS_REF
+
+#version
+ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 1.1.0
 
 #labeling
 LABEL maintainer="netpi@hilscher.com" \
-      version="V1.0.0" \
+      version=$HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION \
       description="netX real-time ethernet programming examples"
-
-#version
-ENV HILSCHERNETPI_NETX_PROGRAMMING_EXAMPLES_VERSION 1.0.0
 
 #install ssh, gcc, create user "pi" and make him sudo
 RUN apt-get update  \
@@ -44,8 +50,9 @@ COPY ./manuals/* manuals/
 #copy the firmware packages
 COPY ./firmwares/* firmwares/
 
-#copy the netx driver
+#copy the netx driver and include files
 COPY ./driver/* driver/
+COPY ./driver/includes/* /usr/include/cifx/
 
 #copy the include files
 COPY examples/includes/EtherCAT/* includes/EtherCAT/
@@ -72,7 +79,7 @@ COPY examples/Makefile ./
 COPY examples/sources/* sources/
 
 #install the driver
-RUN dpkg -i ./driver/netx-docker-pi-drv-1.1.3.deb 
+RUN dpkg -i ./driver/netx-docker-pi-drv-2.0.1-r0.deb
 
 #compile the applications
 RUN make
@@ -85,7 +92,4 @@ ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 
 #set STOPSGINAL
 STOPSIGNAL SIGTERM
-
-#stop processing ARM emulation (comment out next line if built on Raspberry)
-RUN [ "cross-build-end" ]
 

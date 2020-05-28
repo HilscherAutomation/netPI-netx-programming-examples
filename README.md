@@ -1,12 +1,19 @@
-## netX programming examples
+## netX programming
 
-Made for [netPI RTE 3](https://www.netiot.com/netpi/), the Raspberry Pi 3B Architecture based industrial suited Open Edge Connectivity Ecosystem
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![](https://images.microbadger.com/badges/commit/hilschernetpi/netpi-netx-programming-examples.svg)](https://microbadger.com/images/hilschernetpi/netpi-netx-programming-examples "netX programming examples")
+[![Docker Registry](https://img.shields.io/docker/pulls/hilschernetpi/netpi-netx-programming-examples.svg)](https://registry.hub.docker.com/r/hilschernetpi/netpi-netx-programming-examples/)&nbsp;
+[![Image last updated](https://img.shields.io/badge/dynamic/json.svg?url=https://api.microbadger.com/v1/images/hilschernetpi/netpi-netx-programming-examples&label=Image%20last%20updated&query=$.LastUpdated&colorB=007ec6)](http://microbadger.com/images/hilschernetpi/netpi-netx-programming-examples "Image last updated")&nbsp;
 
-### netX programming example applications for PROFINET, EtherNet/IP, EtherCAT, POWERLINK and Modbus/TCP
+Made for Raspberry Pi 3B architecture based devices and compatibles featuring a netX51 industrial network controller
+
+### Container features
+
+The image provided herunder deploys a container that includes different programming examples for the on-board netX51 industrial network controller.
 
 Base of this image builds [debian](https://www.balena.io/docs/reference/base-images/base-images/) with enabled [SSH](https://en.wikipedia.org/wiki/Secure_Shell) and created user 'pi'.
 
-Additionally the image provides netX programming examples in source code (and as precompiled executables) for 
+Additionally the image contains netX51 programming examples in source code and as precompiled executables for the following protocols
 
 * PROFINET IO-device 
 * EtherNet/IP adapter
@@ -14,43 +21,81 @@ Additionally the image provides netX programming examples in source code (and as
 * POWERLINK slave
 * Modbus/TCP server
 
-#### Container prerequisites
+### Container hosts
 
-##### Port mapping
+The container has been successfully tested on the following Docker hosts
+
+* netPI, model RTE 3, product name NIOT-E-NPI3-51-EN-RE
+* netIOT Connect, product name NIOT-E-TPI51-EN-RE
+* netFIELD Connect, product name NIOT-E-TPI51-EN-RE/NFLD
+
+netPI devices specifically feature a restricted Docker protecting the Docker host system software's integrity by maximum. The restrictions are
+
+* privileged mode is not automatically adding all host devices `/dev/` to a container
+* volume bind mounts to rootfs is not supported
+* the devices `/dev`,`/dev/mem`,`/dev/sd*`,`/dev/dm*`,`/dev/mapper`,`/dev/mmcblk*` cannot be added to a container
+
+### Container setup
+
+#### Port mapping
 
 For enabling remote login to the container across SSH the container's SSH port 22 needs to be exposed to the host.
 
-##### Host device
+#### Host device
 
 To grant access to the netX from inside the container the `/dev/spidev0.0` host device needs to be added to the container.
 
-#### Getting started
+### Container deployment
 
-STEP 1. Open netPI's landing page under `https://<netpi's ip address>`.
+Pulling the image may take 10 minutes.
+
+#### netPI example
+
+STEP 1. Open netPI's web UI in your browser (https).
 
 STEP 2. Click the Docker tile to open the [Portainer.io](http://portainer.io/) Docker management user interface.
 
-STEP 3. Enter the following parameters under **Containers > Add Container**
+STEP 3. Enter the following parameters under *Containers > + Add Container*
 
-* **Image**: `hilschernetpi/netpi-netx-programming-examples`
-
-* **Port mapping**: `Host "22" (any unused one) -> Container "22"` 
-
-* **Restart policy"** : `always`
-
-* **Runtime > Devices > add device**: `Host "/dev/spidev0.0" -> Container "/dev/spidev0.0"`
+Parameter | Value | Remark
+:---------|:------ |:------
+*Image* | **hilschernetpi/netpi-netx-programming-examples**
+*Port mapping* | *host* **unused port e.g.23** -> *container* **22** | 
+*Restart policy* | **always**
+*Runtime > Devices > +add device* | *Host path* **/dev/spidev0.0** -> *Container path* **/dev/spidev0.0** |
 
 STEP 4. Press the button **Actions > Start/Deploy container**
 
-Pulling the image may take a while (5-10mins). Sometimes it takes so long that a time out is indicated. In this case repeat the **Actions > Start/Deploy container** action.
+#### Docker command line example
 
-#### Accessing
+`docker run -d --restart=always --device=/dev/spidev0.0:/dev/spidev0.0 -p 23:22/tcp hilschernetpi/netpi-netx-programming-examples`
 
-The container starts the SSH service automatically.
+#### Docker compose example
 
-Login to it with an SSH client such as [putty](http://www.putty.org/) using netPI's IP address at your mapped port. Use the credentials `pi` as user and `raspberry` as password when asked and you are logged in as non-root user `pi`.
+A `docker-compose.yml` file could look like this
 
-##### Files and folders
+    version: "2"
+
+    services:
+     nodered:
+       image: hilschernetpi/netpi-netx-programming-examples
+       restart: always
+       ports:
+         - 23:22
+       devices:
+         - "/dev/spidev0.0:/dev/spidev0.0"
+
+### Container access
+
+The container starts the SSH server automatically when deployed. 
+
+For an SSH terminal session use an SSH client such as [putty](http://www.putty.org/) with the Docker host IP address (@port number mapped e.g.23).
+
+Use the credentials `pi` as user and `raspberry` as password when asked and you are logged in as non-root user `pi`.
+
+Continue to use [Linux commands](https://www.raspberrypi.org/documentation/linux/usage/commands.md) in the terminal as usual.
+
+#### Container files and folders
 
 The login directs you to the pi user home directory /home/pi with following structure
 
@@ -75,7 +120,7 @@ The login directs you to the pi user home directory /home/pi with following stru
 
 To install the netX SPI driver package move to the `driver` folder and call 
 
-`dpkg -i netx-docker-pi-drv-1.1.3.deb`
+`dpkg -i netx-docker-pi-drv-2.0.1-r0.deb`
 
 The driver will be installed into the folder `/opt/cifx`. 
 
@@ -87,15 +132,15 @@ Basic include files needed for the compilation process will be installed into fo
 
 To install a firmware package move to the folder `firmwares` and call
 
-* `dpkg -i netx-docker-pi-pns-3.12.0.2.deb` for PROFINET IO device firmware or  
+* `dpkg -i netx-docker-pi-pns-3.14.0.5.deb` for PROFINET IO device firmware or  
 * `dpkg -i netx-docker-pi-eis-2.12.5.0.deb` for EtherNet/IP adapter firmware or
-* `dpkg -i netx-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware
-* `dpkg -i netx-docker-pi-pls-3.3.0.0.deb` for POWERLINK slave firmware
+* `dpkg -i netx-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware or
+* `dpkg -i netx-docker-pi-pls-3.3.0.0.deb` for POWERLINK slave firmware or
 * `dpkg -i netx-docker-pi-omb-2.6.0.6.deb` for Modbus/TCP server firmware
 
 Any firmware package extracts its firmware into the folder `/opt/cifx/deviceconfig/FW/channel0`. 
 
-The firmware will be loaded by the driver into netX network controller the first time the driver is accessed using the `cifXDriverInit()` command.
+The firmware will be automatically loaded by the driver into the netX network controller when the driver is accesed by an application the first time using the `cifXDriverInit()` function.
 
 There can be only one installed netX firmware package at a time. An existing package will be automatically uninstalled during the installation procedure.
 
@@ -125,9 +170,9 @@ If a different IO length is required you have to adjust the length in the file `
 
 Afterwards recompile and start the new examples to become effective. Make sure you also modify the device description files and reload them into the master/contoller engineering software to sychronize the project with the new physical setup.
 
-##### Starting the executables
+##### Starting the pre-compiled executables
 
-To start the compiled examples call the following executeables in the pi home directory
+To start the pre-compiled examples call the following executeables in the pi home directory
 
 * `sudo ./PNS_simpleConfig` for the PROFINET IO device example
 * `sudo ./EIS_simpleConfig` for the EtherNet/IP adapter example
@@ -135,7 +180,7 @@ To start the compiled examples call the following executeables in the pi home di
 * `sudo ./PLS_simpleConfig` for the POWERLINK slave example
 * `sudo ./OMB_simpleConfig` for the Modbus/TCP server example
 
-Each example checks if its corresponding firmware package has been installed properly and loaded into netX, else it will install and load it automatically.
+Each example checks if the related firmware package has been installed properly. It not it installs the package prior operation.
 
 ##### Electronic Data Sheets
 
@@ -155,7 +200,7 @@ To link the cifX driver library to own applications just add the option `-lcifx`
 
 The cifX driver's function application interfaace (API) is described in the manual 
 
-`cifX_API_PR_04_EN.pdf` 
+`cifX_API_PR_08_EN.pdf` 
 
 located in the `manuals` folder. These call functions provide you a simple interface between your application and netX network controller.
 
@@ -165,7 +210,7 @@ A netX firmware has a common part that is behaving the same for all firmwares an
 
 The protocol specific dependencies are described in the manuals
 
-* `PROFINET_IO-Device_V3.12_Protocol_API_17_EN.pdf` for PROFINET IO device 
+* `PROFINET IO-Device V3.14 Protocol API 19 EN.pdf` for PROFINET IO device 
 * `EtherNetIP_Adapter_Protocol_API_19_EN.pdf` for EtherNet/IP adapter
 * `EtherCAT Slave V4 Protocol API 09 EN.pdf` for EtherCAT slave
 * `POWERLINK Slave V4 Protocol API 09 EN.pdf` for POWERLINK slave
@@ -173,15 +218,12 @@ The protocol specific dependencies are described in the manuals
 
 located in the `manuals` folder.
 
-#### Automated build
+### License
 
-The project complies with the scripting based [Dockerfile](https://docs.docker.com/engine/reference/builder/) method to build the image output file. Using this method is a precondition for an [automated](https://docs.docker.com/docker-hub/builds/) web based build process on DockerHub platform.
+Copyright (c) Hilscher Gesellschaft fuer Systemautomation mbH. All rights reserved.
+Licensed under the LISENSE.txt file information stored in the project's source code repository.
 
-DockerHub web platform is x86 CPU based, but an ARM CPU coded output file is needed for Raspberry systems. This is why the Dockerfile includes the [balena](https://balena.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub/) steps.
-
-#### License
-
-View the license information for the software in the project. As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
 
 [![N|Solid](http://www.hilscher.com/fileadmin/templates/doctima_2013/resources/Images/logo_hilscher.png)](http://www.hilscher.com)  Hilscher Gesellschaft fuer Systemautomation mbH  www.hilscher.com

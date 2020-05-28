@@ -8,7 +8,7 @@
     $Workfile: EIS_simpleConfig.c $
    Last Modification:
     $Author : AB$
-    $Modtime: 08.04.19 09:40 $
+    $Modtime: 28.05.20 09:40 $
     $Revision$
 
    Targets:
@@ -27,6 +27,7 @@
 
      Version   Date        Author   Description
      ----------------------------------------------------------------------------------
+     11        28.05.2020  AB       - changed to latest driver
      10        08.04.2019  PST      - example simplified
       9        22.06.2018  AB       - add function prototypes to prevent compiler warnings
       8        05.01.2018  AB       - new netx driver 1.1.3
@@ -503,8 +504,8 @@ int main(int argc, char* argv[])
   while( (lRet = stat("/opt/cifx/plugins/netx-spm/config0",&buffer)) != 0) {
     printf("\nThe netX driver has not been found installed.\n");
     printf("Installing the driver now.\n");
-    if( system("dpkg -i ./driver/netx-docker-pi-drv-1.1.3.deb") == -1 ) {
-      printf("Installing the driver failed. Check if driver package 'netx-docker-pi-drv-1.1.3.deb' is located in folder './driver'(relative path to demo app).\n");
+    if( system("dpkg -i ./driver/netx-docker-pi-drv-2.0.1-r0.deb") == -1 ) {
+      printf("Installing the driver failed. Check if driver package 'netx-docker-pi-drv-2.0.1-r0.deb' is located in folder './driver'(relative path to demo app).\n");
       return 0;
     }
   }
