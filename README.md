@@ -133,7 +133,7 @@ Basic include files needed for the compilation process will be installed into fo
 To install a firmware package move to the folder `firmwares` and call
 
 * `dpkg -i netx-docker-pi-pns-3.14.0.5.deb` for PROFINET IO device firmware or  
-* `dpkg -i netx-docker-pi-eis-2.12.5.0.deb` for EtherNet/IP adapter firmware or
+* `dpkg -i netx-docker-pi-eis-2.14.0.2.deb` for EtherNet/IP adapter firmware or
 * `dpkg -i netx-docker-pi-ecs-4.7.0.2.deb` for EtherCAT slave firmware or
 * `dpkg -i netx-docker-pi-pls-3.3.0.0.deb` for POWERLINK slave firmware or
 * `dpkg -i netx-docker-pi-omb-2.6.0.6.deb` for Modbus/TCP server firmware
@@ -211,7 +211,7 @@ A netX firmware has a common part that is behaving the same for all firmwares an
 The protocol specific dependencies are described in the manuals
 
 * `PROFINET IO-Device V3.14 Protocol API 19 EN.pdf` for PROFINET IO device 
-* `EtherNetIP_Adapter_Protocol_API_19_EN.pdf` for EtherNet/IP adapter
+* `EtherNetIP_Adapter_Protocol_API_20_EN.pdf` for EtherNet/IP adapter
 * `EtherCAT Slave V4 Protocol API 09 EN.pdf` for EtherCAT slave
 * `POWERLINK Slave V4 Protocol API 09 EN.pdf` for POWERLINK slave
 * `OpenModbusTCP Protocol API 10 EN.pdf` for Modbus TCP server
