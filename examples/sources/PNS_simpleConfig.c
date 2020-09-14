@@ -517,8 +517,8 @@ int main(int argc, char* argv[])
   while( (lRet = stat("/opt/cifx/deviceconfig/FW/channel0/R160D000.nxf",&buffer)) != 0) {
     printf("\nThe PROFINET IO device firmware has not been found installed.\n");
     printf("Installing the firmware now.\n");
-    if( system("dpkg -i ./firmwares/netx-docker-pi-pns-3.14.0.5.deb") == -1) {
-      printf("Installing the firmware failed. Check if firmware 'netx-docker-pi-pns-3.14.0.5.deb' package is located in folder './firmwares'(relative path to demo app).\n");
+    if( system("dpkg -i ./firmwares/netx-docker-pi-pns-4.5.0.5.deb") == -1) {
+      printf("Installing the firmware failed. Check if firmware 'netx-docker-pi-pns-4.5.0.5.deb' package is located in folder './firmwares'(relative path to demo app).\n");
       return 0;
     }
   }
