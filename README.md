@@ -1,11 +1,10 @@
 ## netX programming
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![](https://images.microbadger.com/badges/commit/hilschernetpi/netpi-netx-programming-examples.svg)](https://microbadger.com/images/hilschernetpi/netpi-netx-programming-examples "netX programming examples")
-[![Docker Registry](https://img.shields.io/docker/pulls/hilschernetpi/netpi-netx-programming-examples.svg)](https://registry.hub.docker.com/r/hilschernetpi/netpi-netx-programming-examples/)&nbsp;
-[![Image last updated](https://img.shields.io/badge/dynamic/json.svg?url=https://api.microbadger.com/v1/images/hilschernetpi/netpi-netx-programming-examples&label=Image%20last%20updated&query=$.LastUpdated&colorB=007ec6)](http://microbadger.com/images/hilschernetpi/netpi-netx-programming-examples "Image last updated")&nbsp;
-
 Made for Raspberry Pi 3B architecture based devices and compatibles featuring a netX51 industrial network controller
+
+### Docker repository
+
+https://hub.docker.com/r/hilschernetpi/netpi-netx-programming-examples
 
 ### Container features
 
@@ -62,7 +61,7 @@ Parameter | Value | Remark
 *Image* | **hilschernetpi/netpi-netx-programming-examples**
 *Port mapping* | *host* **unused port e.g.23** -> *container* **22** | 
 *Restart policy* | **always**
-*Runtime > Devices > +add device* | *Host path* **/dev/spidev0.0** -> *Container path* **/dev/spidev0.0** |
+*Adv.con.set. > Runt. & Res. > +add device* | *Host path* **/dev/spidev0.0** -> *Container path* **/dev/spidev0.0** |
 
 STEP 4. Press the button **Actions > Start/Deploy container**
 
